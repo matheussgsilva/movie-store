@@ -41,16 +41,22 @@ export const InputArea = styled.div`
         margin-left: -40px;
         z-index: 1;
         padding: 0px 6px;
+        cursor: pointer;
     }
 `;
 
 export const IconArea = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 5%;
+    width: 6%;
     color: #fff;
     font-size: 1.8rem;
     margin-right: 80px;
+
+    p {
+        margin-right: 5px;
+        cursor: pointer;
+    }
 
     span::after {
         content: '2';
