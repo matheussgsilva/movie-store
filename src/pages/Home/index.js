@@ -1,5 +1,5 @@
 import * as C from './styles'
-import MovieCard from '../../components/MovieCard'
+import MovieList from '../../components/MovieList'
 
 const Home = () => {
     const movies = [
@@ -33,9 +33,7 @@ const Home = () => {
     ]
     return (
         <C.Container>
-            {movies.map(( movie ) => (
-                <MovieCard index={movie.id} movie={movie} />
-                ))}
+            <MovieList />
         </C.Container>
     )
 }
