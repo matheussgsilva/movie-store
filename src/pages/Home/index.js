@@ -1,4 +1,5 @@
 import * as C from './styles'
+import MovieCard from '../../components/MovieCard'
 
 const Home = () => {
     const movies = [
@@ -32,11 +33,9 @@ const Home = () => {
     ]
     return (
         <C.Container>
-            <ul>
             {movies.map(( movie ) => (
-                <li key={movie.id}>{movie.name}</li>
+                <MovieCard index={movie.id} movie={movie} />
                 ))}
-            </ul>
         </C.Container>
     )
 }
