@@ -33,7 +33,12 @@ const Home = () => {
     ]
     return (
         <C.Container>
-            <MovieList />
+            <MovieList movies={movies} sessionTitle={'Destaque'} />
+            <MovieList movies={movies} sessionTitle={'Drama'} />
+            <MovieList movies={movies} sessionTitle={'Comédia'} />
+            <MovieList movies={movies} sessionTitle={'Terror'} />
+            <MovieList movies={movies} sessionTitle={'Lançamentos'} />
+            <MovieList movies={movies} sessionTitle={'Infantil'} />
         </C.Container>
     )
 }
