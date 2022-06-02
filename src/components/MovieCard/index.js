@@ -6,14 +6,14 @@ const MovieCard = ({ movie }) => {
         <C.Container>
             <C.ContentArea>
                 <C.PosterArea>
-                    <img src={movie.poster} alt={movie.name} />
-                    <span>{movie.release}</span>
+                    <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+                    <span>{movie.release_date}</span>
                     <div><FaHeart /></div>
                 </C.PosterArea>
                 <C.InfoArea>
-                    <h3>{movie.name}</h3>
+                    <h3>{movie.title}</h3>
                     <div>
-                        <span>{movie.rating}</span>
+                        <span>{movie.vote_average}</span>
                         <span><FaStar /></span>
                         <span>{movie.genre}</span>
                     </div>
