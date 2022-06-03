@@ -5,7 +5,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     width: 180px;
-    height: 320px;
+    height: 350px;
 `;
 
 export const ContentArea = styled.div`
@@ -25,8 +25,8 @@ export const PosterArea = styled.div`
     position: relative;
 
     img {
-        width: 100%;
-        height: 100%;
+        width: 170px;
+        height: 200px;
         border-radius: 5px 5px 0px 0px;
     }
 
@@ -53,7 +53,11 @@ export const PosterArea = styled.div`
 `;
 
 export const InfoArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     text-align: center;
+    height: 110px;
 
     h3 {
         font-size: 1rem;
