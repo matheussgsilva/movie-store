@@ -2,6 +2,7 @@ import * as C from './styles'
 import { FaHeart, FaStar } from 'react-icons/fa'
 
 const MovieCard = ({ movie }) => {
+
     return (
         <C.Container>
             <C.ContentArea>
@@ -11,13 +12,13 @@ const MovieCard = ({ movie }) => {
                     <div><FaHeart /></div>
                 </C.PosterArea>
                 <C.InfoArea>
-                    <h3>{movie.title}</h3>
+                    <h3>{movie.title.length > 40 ? `${movie.title.slice(0,35)}...` : movie.title}</h3>
                     <div>
                         <span>{movie.vote_average}</span>
                         <span><FaStar /></span>
                         <span>{movie.genre}</span>
                     </div>
-                    <p>{movie.price}</p>
+                    <p>R$ {(Math.random()*10).toFixed(2)}</p>
                 </C.InfoArea>
             </C.ContentArea>
             <C.Button>Adicionar</C.Button>
