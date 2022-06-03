@@ -1,15 +1,15 @@
 import * as C from './styles'
 import MovieList from '../../components/MovieList'
 
-const Home = ({ movies }) => {
+const Home = () => {
     return (
         <C.Container>
-            <MovieList movies={movies} sessionTitle={'Destaque'} />
-            <MovieList movies={movies} sessionTitle={'Drama'} />
-            <MovieList movies={movies} sessionTitle={'Comédia'} />
-            <MovieList movies={movies} sessionTitle={'Terror'} />
-            <MovieList movies={movies} sessionTitle={'Lançamentos'} />
-            <MovieList movies={movies} sessionTitle={'Infantil'} />
+            <MovieList moviesId={''} sessionTitle={'Destaque'} />
+            <MovieList moviesId={99} sessionTitle={'Documentário'} />
+            <MovieList moviesId={35} sessionTitle={'Comédia'} />
+            <MovieList moviesId={27} sessionTitle={'Terror'} />
+            <MovieList moviesId={10749} sessionTitle={'Romance'} />
+            <MovieList moviesId={16} sessionTitle={'Infantil'} />
         </C.Container>
     )
 }
