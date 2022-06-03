@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 
-const Router = ({ movies }) => {
+const Router = () => {
     return (
     <BrowserRouter>
       <Routes>
-          <Route path='/' element={<Home movies={movies} />} />
+          <Route path='/' element={<Home />} />
       </Routes>
     </BrowserRouter>
     )
