@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import * as C from './styles'
 import { FaHeart, FaStar } from 'react-icons/fa'
 
@@ -7,7 +8,9 @@ const MovieCard = ({ movie }) => {
         <C.Container>
             <C.ContentArea>
                 <C.PosterArea>
-                    <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+                    <Link to={`/detail/${movie.id}`}>
+                        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+                    </Link>
                     <span>{movie.release_date}</span>
                     <div><FaHeart /></div>
                 </C.PosterArea>
