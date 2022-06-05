@@ -8,24 +8,52 @@ export const Detail = styled.div`
     display: flex;
 
     img {
-        width: 65vw;
+        width: 70vw;
+        height: 80vh;
         margin-right: 0px;
-        margin-left: -250px;
+        border-radius: 10px;
+        box-shadow: -10px 12px 30px -3px rgba(0,0,0,0.5);
     }
 `;
 
 export const InfoArea = styled.div`
-    width: 50vw;
-    background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 100%);
-    z-index: 1;    
+    width: 30vw;  
     padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #4B5C6B;
+`;
 
-    h2 {
-        max-width: 300px;
+export const MovieTitle = styled.h2`
+    max-width: 300px;
+    margin-top: 0px;
+`;
+
+export const MovieInfo = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    span {
+        margin-right: 5px;
     }
 
-    p{
-        display: block;
-        width: 30vw;
+    i {
+        margin-right: 10px;
     }
+`;
+
+export const MovieLink = styled.a`
+    text-decoration: none;
+    color: #4B5C6B;
+
+    &:hover {
+        text-decoration: underline;
+    }
+`;
+
+export const MovieOverview = styled.p`
+    display: block;
+    width: 30vw;
 `;
