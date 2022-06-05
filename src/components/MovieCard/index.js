@@ -15,7 +15,7 @@ const MovieCard = ({ movie }) => {
                     <div><FaHeart /></div>
                 </C.PosterArea>
                 <C.InfoArea>
-                    <h3>{movie.title.length > 40 ? `${movie.title.slice(0,35)}...` : movie.title}</h3>
+                    <h3>{movie.title.length > 35 ? `${movie.title.slice(0,35)}...` : movie.title}</h3>
                     <div>
                         <span>{movie.vote_average}</span>
                         <span><FaStar /></span>
