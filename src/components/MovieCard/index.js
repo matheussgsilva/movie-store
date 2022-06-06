@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
 import * as C from './styles'
-import { FaHeart, FaStar } from 'react-icons/fa'
+import { FaHeart, FaStar, FaInfoCircle } from 'react-icons/fa'
 
-const MovieCard = ({ movie }) => {
-
+const MovieCard = ({ movie, favoriteMovie }) => {
     return (
         <C.Container>
             <C.ContentArea>
@@ -12,7 +11,8 @@ const MovieCard = ({ movie }) => {
                         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
                     </Link>
                     <span>{movie.release_date}</span>
-                    <div><FaHeart /></div>
+                    <i className='favorite' onClick={() => favoriteMovie(movie.id)}><FaHeart /></i>
+                    <i className='info'><FaInfoCircle /></i>
                 </C.PosterArea>
                 <C.InfoArea>
                     <h3>{movie.title.length > 35 ? `${movie.title.slice(0,35)}...` : movie.title}</h3>
