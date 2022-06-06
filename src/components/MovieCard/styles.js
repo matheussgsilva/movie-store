@@ -42,10 +42,19 @@ export const PosterArea = styled.div`
         font-size: 0.8rem;
     }
 
-    div {
+    .favorite {
         position: absolute;
         top: 0;
         right: 0;
+        margin: 10px;
+        color: #FFF;
+        cursor: pointer;
+    }
+
+    .info {
+        position: absolute;
+        top: 0;
+        left: 0;
         margin: 10px;
         color: #FFF;
         cursor: pointer;
