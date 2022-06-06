@@ -2,15 +2,18 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     display: flex;
+    overflow-y: hidden;
+    padding-bottom: 25px;
 `;
 
 export const Detail = styled.div`
     display: flex;
 
     img {
-        width: 70vw;
-        height: 80vh;
-        margin-right: 0px;
+        width: 60vw;
+        height: 78vh;
+        margin-right: 1px;
+        margin-left: -15px;
         border-radius: 10px;
         box-shadow: -10px 12px 30px -3px rgba(0,0,0,0.5);
     }
