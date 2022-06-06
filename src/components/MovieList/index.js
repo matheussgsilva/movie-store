@@ -5,6 +5,11 @@ import tmdb from '../../lib/tmdb'
 
 const MovieList = ({ moviesId, sessionTitle }) => {
     const [movies, setMovies] = useState([])
+    const [isfavorite, setIsfavorite] = useState()
+    const [favoriteList, setFavoriteList] = useState([])
+
+    
+        console.log(favoriteList)
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${tmdb}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${moviesId}&with_watch_monetization_types=flatrate`)
@@ -12,12 +17,28 @@ const MovieList = ({ moviesId, sessionTitle }) => {
         .then(data => setMovies(data.results))
       }, [])
 
+      useEffect (() => {
+
+        const setNewFavorite = () => {
+          let newFavorite = [...favoriteList];
+          newFavorite.push({
+              id: isfavorite,
+          });
+          setFavoriteList(newFavorite);
+        }
+         isfavorite &&  setNewFavorite()
+      }, [isfavorite]);
+
     return (
         <C.Container>
             <C.Title>{sessionTitle}</C.Title>
             <C.List>
                 {movies.map(( movie ) => (
-                    <MovieCard key={movie.id} movie={movie} />
+                    <MovieCard 
+                        key={movie.id} 
+                        movie={movie}
+                        favoriteMovie={favorite => setIsfavorite(favorite)}
+                    />
                 ))}
             </C.List>
         </C.Container>
