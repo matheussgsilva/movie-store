@@ -6,6 +6,7 @@ import tmdb from '../../lib/tmdb'
 
 const MovieDetail = () => {
     const [movieDetail, setMovieDetail] = useState([])
+    const [isFavorite, setIsFavorite] = useState(false)
     const { id } = useParams()
     const release = String(movieDetail.release_date)
 
@@ -13,7 +14,11 @@ const MovieDetail = () => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb}&language=pt-BR`)
         .then(res => res.json())
         .then(data => setMovieDetail(data))
-    }, [])   
+    }, [])
+
+    const handleFavorite = () => {
+        setIsFavorite(!isFavorite)
+    }
 
     return (
         <C.Container>
@@ -35,6 +40,11 @@ const MovieDetail = () => {
                         </C.MovieLink>                    
                     }
                     <C.MovieOverview>{movieDetail.overview}</C.MovieOverview>
+                    <C.FavoriteIcon 
+                        onClick={handleFavorite}
+                        isFavorite={isFavorite}>
+                            {isFavorite ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'} <i><FaHeart /></i>
+                    </C.FavoriteIcon>
                 </C.InfoArea>
                     <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />
             </C.Detail>

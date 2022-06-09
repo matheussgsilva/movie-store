@@ -8,6 +8,7 @@ export const Container = styled.div`
 
 export const Detail = styled.div`
     display: flex;
+    justify-content: space-between;
 
     img {
         width: 60vw;
@@ -21,7 +22,7 @@ export const Detail = styled.div`
 
 export const InfoArea = styled.div`
     width: 30vw;  
-    padding: 5vw;
+    padding: 20px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,4 +60,27 @@ export const MovieLink = styled.a`
 export const MovieOverview = styled.p`
     display: block;
     width: 30vw;
+`;
+
+export const FavoriteIcon = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: none;
+    width: 250px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #8DD7CF;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    i {
+        color: ${props => props.isFavorite ? '#FA4C37' : '#FFF'};
+    }
 `;
