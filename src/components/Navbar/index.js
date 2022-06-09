@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import * as C from './styles'
 import { FaShoppingCart } from 'react-icons/fa'
 import { FaHeart } from 'react-icons/fa'
 import { FaSearch } from 'react-icons/fa'
 
-const Navbar = ({ search, onFavScreen, onCartScreen }) => {
+const Navbar = ({ search, onCartScreen }) => {
     const [searchField, setSearchField] = useState('')
 
     return (
@@ -24,12 +25,13 @@ const Navbar = ({ search, onFavScreen, onCartScreen }) => {
                     <FaSearch />
                 </span>
             </C.InputArea>
-            <C.IconArea>
-                <p>
-                    <FaHeart 
-                        onClick={onFavScreen}
-                    />
-                </p>
+            <C.IconArea>                
+                <Link to={'/favoritos'}>
+                    <p>
+                        <FaHeart />
+                    </p>
+                </Link>
+                
                 <p>
                     <span>
                         <FaShoppingCart 
