@@ -11,7 +11,6 @@ const App = () => {
     <>
     <Navbar 
         search={value => setSearchValue(value)}
-        onFavScreen={() => console.log('open Fav screen')}
         onCartScreen={() => console.log('open Cart screen')}       
       />
     <Router />
