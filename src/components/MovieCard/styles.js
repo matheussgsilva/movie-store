@@ -42,15 +42,6 @@ export const PosterArea = styled.div`
         font-size: 0.8rem;
     }
 
-    .favorite {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 10px;
-        color: #FFF;
-        cursor: pointer;
-    }
-
     .info {
         position: absolute;
         top: 0;
@@ -59,6 +50,15 @@ export const PosterArea = styled.div`
         color: #FFF;
         cursor: pointer;
     }
+`;
+
+export const FavoriteIcon = styled.i`
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: ${props => props.favorite ? '#FA4C37' : '#FFF'};
+    cursor: pointer;
 `;
 
 export const InfoArea = styled.div`
