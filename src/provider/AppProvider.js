@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 
-export const AppContext = React.createContext({});
+export const AppContext = React.createContext({})
 
 export const AppProvider = (props) => {
   const [favoriteMovies, setFavoriteMovies] = useState([{
-    id: "",
+    id: '',
   }]);
 
   useEffect(() => {
-    const userStorage = localStorage.getItem("favoriteMovies");
+    const userStorage = localStorage.getItem("favoriteMovies")
     if (userStorage) {
-      setFavoriteMovies(JSON.parse(userStorage));
+      setFavoriteMovies(JSON.parse(userStorage))
     } else {
         setFavoriteMovies([{
-        id: "",
-      }]);
+        id: '',
+      }])
     }
-  }, []);
+  }, [])
 
   return (
     <AppContext.Provider value={{ favoriteMovies, setFavoriteMovies }}>
@@ -25,4 +25,4 @@ export const AppProvider = (props) => {
   );
 };
 
-export const useApp = () => React.useContext(AppContext);
+export const useApp = () => React.useContext(AppContext)
