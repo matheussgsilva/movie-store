@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import * as C from './styles'
 import { FaHeart, FaStar, FaInfoCircle } from 'react-icons/fa'
@@ -10,15 +10,23 @@ const MovieCard = ({ movie }) => {
 
     console.log('Movie Card', favoriteMovies);
 
+    useEffect(() => {
+        favoriteMovies.map((favoriteMovie) => {
+            if (favoriteMovie.id === movie.id) {
+                setIsFavorite(true)
+            }
+        })
+    }, [])
+
     const handleFavoriteMovie = () => {
-        if (favoriteMovies.includes(movie.id)) {
-            let newFavorite = favoriteMovies.filter(item => (item !== movie.id))
+        if (isFavorite) {
+            let newFavorite = favoriteMovies.filter(item => (item.id !== movie.id))
             setFavoriteMovies(newFavorite)
             setIsFavorite(false)
         }
         else {
             let newFavorite = [...favoriteMovies]
-            newFavorite.push(movie.id)
+            newFavorite.push(movie)
             setFavoriteMovies(newFavorite)
             setIsFavorite(true)
         }
