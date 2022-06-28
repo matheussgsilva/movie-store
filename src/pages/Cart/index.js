@@ -8,10 +8,20 @@ const Cart = () => {
     return (
         <Theme>
             <C.Container>
-                <CartItem 
-                    key={movie.id}
-                    movie={movie}
-                />
+                <C.CartList>
+                    <CartItem 
+                        key={movie.id}
+                        movie={movie}
+                    />
+                    <CartItem 
+                        key={movie.id}
+                        movie={movie}
+                    />
+                    <CartItem 
+                        key={movie.id}
+                        movie={movie}
+                    />
+                </C.CartList>
             </C.Container>
         </Theme>
     )
