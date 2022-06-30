@@ -3,17 +3,26 @@ import { Link } from 'react-router-dom'
 import * as C from './styles'
 import { FaHeart, FaStar, FaInfoCircle } from 'react-icons/fa'
 import { useApp } from '../../provider/AppProvider'
+import { useCart } from '../../provider/CartProvider'
 
 const MovieCard = ({ movie }) => {
     const [isFavorite, setIsFavorite] = useState(false)
+    const [isAddCart, setIsAddCart] = useState(false)
     const { favoriteMovies, setFavoriteMovies } = useApp()
-
-    console.log('Movie Card', favoriteMovies);
+    const { cart, setCart } = useCart([])
 
     useEffect(() => {
         favoriteMovies.map((favoriteMovie) => {
             if (favoriteMovie.id === movie.id) {
                 setIsFavorite(true)
+            }
+        })
+    }, [])
+
+    useEffect(() => {
+        cart.map((cartMovie) => {
+            if (cartMovie.id === movie.id) {
+                setIsAddCart(true)
             }
         })
     }, [])
@@ -31,6 +40,23 @@ const MovieCard = ({ movie }) => {
             setIsFavorite(true)
         }
     }
+
+    const handleAddCart = () => {
+        if (isAddCart) {
+            let newCartList = cart.filter(item => (item.id !== movie.id))
+            setCart(newCartList)
+            setIsAddCart(false)
+        }
+        else {
+            let newCartList = [...cart]
+            newCartList.push(movie)
+            setCart(newCartList)
+            setIsAddCart(true)
+        }
+    }
+
+    console.log('CartLIst', cart)
+    console.log('FavoritList', favoriteMovies)
             
 
     return (
@@ -56,7 +82,9 @@ const MovieCard = ({ movie }) => {
                     <p>R$ {(Math.random()*10).toFixed(2)}</p>
                 </C.InfoArea>
             </C.ContentArea>
-            <C.Button>Adicionar</C.Button>
+            <C.Button cart={isAddCart} onClick={handleAddCart}>
+                {isAddCart ? 'Remover' : 'Adicionar'}
+            </C.Button>
         </C.Container>
     )
 }
