@@ -89,7 +89,7 @@ export const Button = styled.button`
     border: none;
     width: 100%;
     padding: 8px;
-    background-color: #6558F5;
+    background-color: ${props => props.cart ? '#FA4C37' : '#6558F5'};
     color: #FFF;
     border-radius: 5px;
     margin-top: -10px;
