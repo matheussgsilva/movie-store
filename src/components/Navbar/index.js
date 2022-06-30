@@ -5,10 +5,12 @@ import { FaShoppingCart } from 'react-icons/fa'
 import { FaHeart } from 'react-icons/fa'
 import { FaSearch } from 'react-icons/fa'
 import { useApp } from '../../provider/AppProvider'
+import { useCart } from '../../provider/CartProvider'
 
 const Navbar = ({ search }) => {
     const [searchField, setSearchField] = useState('')
     const { favoriteMovies } = useApp()
+    const { cart } = useCart()
     const [favorite, setFavorite] = useState(false)
 
     useEffect(() => {
@@ -45,9 +47,12 @@ const Navbar = ({ search }) => {
                     </C.HeartIcon>
                 </Link>
                 <Link to={'/carrinho'}>
-                    <C.CartIcon>
+                    <C.CartIcon  cart={cart}>
                         <FaShoppingCart />
                     </C.CartIcon>
+                    <C.CartNumber cart={cart}>
+                        {cart.length}
+                    </C.CartNumber>
                 </Link>
             </C.IconArea>
         </C.Container>

@@ -8,6 +8,8 @@ export const Container = styled.div`
     height: 15vh;
     background-color: #8DD7CF;
     padding: 0px 40px;
+    position: fixed;
+    z-index: 1;
 `;
 
 export const LogoArea = styled.div`
@@ -68,7 +70,7 @@ export const CartIcon = styled.i`
     color: #fff;
 
     &::after {
-        content: '2';
+        content: '';
         color: #000;
         position: absolute;
         font-size: 0.8rem;
@@ -79,5 +81,18 @@ export const CartIcon = styled.i`
         margin-top: -5px;
         margin-left: -10px;
         text-align: center;
+        transform: ${props => props.cart.length === 0 ? 'scale(0)' : 'scale(1)'};
+        transition: transform 300ms ease-in;
     }
+`;
+
+export const CartNumber = styled.span`
+    color: #333333;
+    text-decoration: none;
+    position: fixed;
+    font-size: 14px;
+    top: 25px;
+    right: 37px;
+    transform: ${props => props.cart.length === 0 ? 'scale(0)' : 'scale(1)'};
+    transition: transform 300ms ease-in;
 `;
