@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
     display: flex;
     justify-content: center;
-    position: relative;
+    padding-top: 90px;
 `;
 
 export const CartList = styled.div`
