@@ -53,11 +53,7 @@ const MovieCard = ({ movie }) => {
             setCart(newCartList)
             setIsAddCart(true)
         }
-    }
-
-    console.log('CartLIst', cart)
-    console.log('FavoritList', favoriteMovies)
-            
+    }            
 
     return (
         <C.Container>
