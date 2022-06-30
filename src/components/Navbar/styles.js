@@ -11,7 +11,10 @@ export const Container = styled.div`
 `;
 
 export const LogoArea = styled.div`
-    color: #FFF;
+    h2{
+        color: #FFF;
+        text-decoration: none;
+    }
 `;
 
 export const InputArea = styled.div`
@@ -48,17 +51,23 @@ export const InputArea = styled.div`
 export const IconArea = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 6%;
     color: #fff;
     font-size: 1.8rem;
-    margin-right: 80px;
+    margin-right: 80px;    
+`;
 
-    p {
-        margin-right: 5px;
-        cursor: pointer;
-    }
+export const HeartIcon = styled.i`
+    color: ${props => props.movies ? '#FA4C37' : '#FFF'}; 
+    margin-right: 5px;
+    cursor: pointer;
+`;
 
-    span::after {
+export const CartIcon = styled.i`
+    color: #fff;
+
+    &::after {
         content: '2';
         color: #000;
         position: absolute;
