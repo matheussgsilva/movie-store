@@ -1,11 +1,14 @@
 import Router from './router'
 import { AppProvider } from './provider/AppProvider'
+import { CartProvider } from './provider/CartProvider'
 
 
 const App = () => {
   return (
-    <AppProvider>    
-      <Router />
+    <AppProvider> 
+    <CartProvider>
+      <Router />    
+    </CartProvider>  
     </AppProvider>
   )
 }
