@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
     display: flex;
     overflow-y: hidden;
+    padding-top: 90px;
     padding-bottom: 25px;
 `;
 
