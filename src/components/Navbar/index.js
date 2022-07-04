@@ -7,7 +7,7 @@ import { FaSearch } from 'react-icons/fa'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
 
-const Navbar = ({ search }) => {
+const Navbar = ({ search, showCartSidebar }) => {
     const [searchField, setSearchField] = useState('')
     const { favoriteMovies } = useApp()
     const { cart } = useCart()
@@ -46,14 +46,14 @@ const Navbar = ({ search }) => {
                         <FaHeart />
                     </C.HeartIcon>
                 </Link>
-                <Link to={'/carrinho'}>
+                <C.CartIconArea onClick={showCartSidebar} >
                     <C.CartIcon  cart={cart}>
                         <FaShoppingCart />
                     </C.CartIcon>
                     <C.CartNumber cart={cart}>
                         {cart.length}
                     </C.CartNumber>
-                </Link>
+                </C.CartIconArea>
             </C.IconArea>
         </C.Container>
     )

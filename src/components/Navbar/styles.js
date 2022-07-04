@@ -66,6 +66,10 @@ export const HeartIcon = styled.i`
     cursor: pointer;
 `;
 
+export const CartIconArea = styled.div`
+    cursor: pointer;
+`;
+
 export const CartIcon = styled.i`
     color: #fff;
 
