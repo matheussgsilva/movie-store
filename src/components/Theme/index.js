@@ -5,7 +5,7 @@ import CartSidebar from '../CartSidebar'
 
 const Theme = ({ children }) => {
     const [searchValue, setSearchValue] = useState('')
-    const [showSidebar, setShowSidebar] = useState(true)
+    const [showSidebar, setShowSidebar] = useState(false)
     
     const handleShowSidebar = () => {
         setShowSidebar(!showSidebar)
@@ -18,7 +18,7 @@ const Theme = ({ children }) => {
                 showCartSidebar={handleShowSidebar}       
             />
             <C.Sidebar showSidebar={showSidebar} >
-                <CartSidebar />
+                <CartSidebar onHidden={handleShowSidebar} />
             </C.Sidebar>
             <C.Page>
                 {children}
