@@ -4,11 +4,13 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;    
     align-items: center;
+    justify-content: space-between;
     width: 450px;
     height: 85vh;
     background-color: #FFF;
     box-shadow: -5px 1px 6px -1px rgba(0,0,0,0.55);
     position: relative;
+    overflow-y: scroll;
 `;
 
 export const Title = styled.h3`
@@ -16,19 +18,43 @@ export const Title = styled.h3`
     text-align: center;
 `;
 
+export const CartItemsArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+`;
+
 export const ButtonArea = styled.div`
     display: flex;
     flex-direction: column;
-    position: fixed;
-    bottom: 0;
+    
     width: 100%;
     height: 120px;
+    padding: 0px 25px;
+    box-sizing: border-box;
+    background-color: #FFF;
+
+    a {
+        text-decoration: none;
+    }
 `;
 
 export const Cart = styled.span`
-    text-decoration: none;
+    display: block;
+    text-align: center;
+    color: #FFF;
+    font-size: 1.2rem;
+    background-color: #8DD7CF;
+    margin-bottom: 5px;
+    padding: 10px;
 `;
 
 export const ShoppingButton = styled.button`
-
+    border: 2px solid #8DD7CF;
+    background-color: transparent;
+    color: #8DD7CF;
+    font-size: 1.2rem;
+    padding: 10px;
+    cursor: pointer;
 `;
