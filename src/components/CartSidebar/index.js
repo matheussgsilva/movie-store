@@ -4,7 +4,8 @@ import { useCart } from '../../provider/CartProvider'
 import SidebarCartItem from '../SidebarCartItem'
 
 const CartSidebar = ({ onHidden }) => {
-    const { cart, setCart } = useCart()
+    const { cart } = useCart()
+
     return (
         <C.Container>
             <C.CartItemsArea>
