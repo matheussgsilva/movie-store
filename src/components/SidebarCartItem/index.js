@@ -3,11 +3,12 @@ import { FaTrash } from 'react-icons/fa'
 import { useCart } from '../../provider/CartProvider'
 
 const SidebarCartItem = ({ movie }) => {
-    const { cart, setCart } = useCart([])
+    const { cart, setCart } = useCart()
 
     const handleRemoveCart = () => {
-        let newCartList = cart.filter(item => (item.id !== movie.id))
-        setCart(newCartList)
+        let newCartList = [...cart]
+        let filteredList = newCartList.filter(item => (item.id !== movie.id))
+        setCart(filteredList)
     }    
 
     return (
@@ -21,9 +22,9 @@ const SidebarCartItem = ({ movie }) => {
                     <C.MoviePrice>
                         R$ 12,50
                     </C.MoviePrice>
-                    <C.RemoveMovie onClick={handleRemoveCart} >
+                    {/*<C.RemoveMovie onClick={handleRemoveCart} >
                         <FaTrash />
-                    </C.RemoveMovie>
+                    </C.RemoveMovie>*/}
                 </C.PriceInfoArea>
             </C.InfoArea>
         </C.Container>
