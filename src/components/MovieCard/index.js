@@ -53,7 +53,52 @@ const MovieCard = ({ movie }) => {
             setCart(newCartList)
             setIsAddCart(true)
         }
-    }            
+    }
+
+    const movieGenre = () => {
+        switch (movie.genre_ids[0]) {
+        case 28:
+            return "Ação";
+        case 12:
+            return "Aventura";
+        case 16:
+            return "Animação";
+        case 35:
+            return "Comédia";
+        case 80:
+            return "Crime";
+        case 99:
+            return "Drama";
+        case 18:
+            return "Ação";
+        case 10751:
+            return "Família";
+        case 14:
+            return "Fantasia";
+        case 36:
+            return "História";
+        case 27:
+            return "Terror";
+        case 10402:
+            return "Música";
+        case 9648:
+            return "Mistério";
+        case 10749:
+            return "Romance";
+        case 878:
+            return "Ficção científica";
+        case 10770:
+            return "Cinema TV";
+        case 53:
+            return "Thriller";
+        case 10752:
+            return "Guerra";
+        case 37:
+            return "Faroeste";
+        default:
+            return ""
+        }
+    }
 
     return (
         <C.Container>
@@ -62,20 +107,20 @@ const MovieCard = ({ movie }) => {
                     <Link to={`/detail/${movie.id}`}>
                         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
                     </Link>
-                    <span>{movie.release_date}</span>
+                    <span>{String(movie.release_date).slice(0,4)}</span>
                     <C.FavoriteIcon favorite={isFavorite} onClick={handleFavoriteMovie}>
                         <FaHeart />
                     </C.FavoriteIcon>
                     <i className='info'><FaInfoCircle /></i>
                 </C.PosterArea>
                 <C.InfoArea>
-                    <h3>{movie.title.length > 35 ? `${movie.title.slice(0,35)}...` : movie.title}</h3>
+                    <h3>{movie.title.length > 30 ? `${movie.title.slice(0,30)}...` : movie.title}</h3>
                     <div>
                         <span>{movie.vote_average}</span>
                         <span><FaStar /></span>
-                        <span>{movie.genre}</span>
+                        <span>{movieGenre()}</span>
                     </div>
-                    <p>R$ {(Math.random()*10).toFixed(2)}</p>
+                    <p>R$ {movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2)}</p>
                 </C.InfoArea>
             </C.ContentArea>
             <C.Button cart={isAddCart} onClick={handleAddCart}>
