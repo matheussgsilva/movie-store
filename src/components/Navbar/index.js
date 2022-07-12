@@ -7,11 +7,11 @@ import { FaSearch } from 'react-icons/fa'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
 
-const Navbar = ({ search, showCartSidebar }) => {
+const Navbar = ({ showCartSidebar }) => {
     const [searchField, setSearchField] = useState('')
+    const [favorite, setFavorite] = useState(false)
     const { favoriteMovies } = useApp()
     const { cart } = useCart()
-    const [favorite, setFavorite] = useState(false)
 
     useEffect(() => {
         if ( favoriteMovies.length === 0) {
@@ -34,11 +34,12 @@ const Navbar = ({ search, showCartSidebar }) => {
                     value={searchField} 
                     onChange={e => setSearchField(e.target.value)}
                 />
-                <span
-                    onClick={() => search(searchField)}
-                >
-                    <FaSearch />
-                </span>
+                <Link to={`/search/${searchField}`}>
+                    <span>
+                        <FaSearch />
+                    </span>
+                </Link>
+                
             </C.InputArea>
             <C.IconArea>                
                 <Link to={'/favoritos'}>
