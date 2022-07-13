@@ -13,6 +13,13 @@ export const Sidebar = styled.aside`
     transition: transform 300ms ease-in-out;
 `;
 
+export const PopUp = styled.div`
+    position: fixed;
+    z-index: 10;
+    right: 18px;
+    top: 12vh;
+`;
+
 export const Page = styled.div`
 
 `;
