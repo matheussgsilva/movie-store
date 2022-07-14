@@ -20,6 +20,7 @@ export const InfoArea = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex: 1;
 `;
 
 export const MovieTitle = styled.h3`
@@ -74,6 +75,7 @@ export const SelectArea = styled.div`
     margin-left: 25px;
     font-size: 0.9rem;
     color: #333333;
+    margin-right: 0;
 
     label {
         margin-bottom: 10px;
