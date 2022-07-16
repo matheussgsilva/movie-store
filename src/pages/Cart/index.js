@@ -3,9 +3,13 @@ import Theme from '../../components/Theme'
 import { useCart } from '../../provider/CartProvider'
 import CartItem from '../../components/CartItem'
 import { FaLock } from 'react-icons/fa'
+import { usePrice } from '../../provider/PriceProvider'
 
 const Cart = () => {
     const { cart } = useCart()
+    const { price } = usePrice()
+
+    console.log("Cart price", price)
 
     return (
         <Theme>
@@ -14,7 +18,7 @@ const Cart = () => {
                     <C.CartListHeader>
                         <C.CartListHeaderInfo>
                             <p>Sacola de compras - Movie Store</p>
-                            <span> 3 itens</span>
+                            <span> {cart.length === 1 ? `1 filme` : `${cart.length} filmes`}</span>
                         </C.CartListHeaderInfo>
                         <C.CartListSecurity>
                             <i>
@@ -35,8 +39,11 @@ const Cart = () => {
                         <span>RESUMO</span>
                     </C.ResumeHeader>
                     <C.ResumeSubtotal>
-                        <span>Subtotal (3 itens)</span>
-                        <strong>R$123,00</strong>
+                        <span>Subtotal ({cart.length === 1 ? `1 filme` : `${cart.length} filmes`})</span>
+                        <C.PriceResume>
+                           
+                            <strong>R$123,00</strong>
+                        </C.PriceResume>
                     </C.ResumeSubtotal>
                     <C.ResumeTotal>
                         <span>Total</span>
