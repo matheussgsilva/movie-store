@@ -1,10 +1,12 @@
 import * as C from './styles'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaStar, FaTrash } from 'react-icons/fa'
 import { useCart } from '../../provider/CartProvider'
+import { usePrice } from '../../provider/PriceProvider'
 
 const CartItem = ({ movie }) => {
     const { cart, setCart } = useCart()
+    const { price, setPrice } = usePrice()
     const [moviePrice, setMoviePrice] = useState(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))
 
     const handlePrice = (e) => {
@@ -14,6 +16,14 @@ const CartItem = ({ movie }) => {
             setMoviePrice(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))
         }
     }
+
+    useEffect(() => {
+        let newPrice = [...price];
+        newPrice.push({
+            id: movie.id,
+            price: moviePrice})
+        setPrice(moviePrice)
+    }, [moviePrice])
 
     const handleRemoveMovie = () => {
         let newCartList = [...cart]
