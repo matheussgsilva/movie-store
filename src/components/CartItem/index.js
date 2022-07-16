@@ -1,8 +1,10 @@
 import * as C from './styles'
 import { useState } from 'react'
 import { FaStar, FaTrash } from 'react-icons/fa'
+import { useCart } from '../../provider/CartProvider'
 
 const CartItem = ({ movie }) => {
+    const { cart, setCart } = useCart()
     const [moviePrice, setMoviePrice] = useState(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))
 
     const handlePrice = (e) => {
@@ -13,7 +15,11 @@ const CartItem = ({ movie }) => {
         }
     }
 
-    
+    const handleRemoveMovie = () => {
+        let newCartList = [...cart]
+        let filteredList = newCartList.filter(item => (item.id !== movie.id))
+        setCart(filteredList)
+    }    
 
     return (
         <C.Container>
@@ -27,7 +33,9 @@ const CartItem = ({ movie }) => {
                     <i><FaStar /></i>
                 </C.RateArea>
                 <C.ReleaseDate><strong>Ano de lançamento: </strong>{movie.release_date.slice(0,4)}</C.ReleaseDate>
-                <C.Remove><FaTrash /> Remover Filme</C.Remove>
+                <C.Remove onClick={handleRemoveMovie}>
+                    <FaTrash /> Remover Filme
+                </C.Remove>
             </C.InfoArea>
             <C.SelectArea>
                 <label>Selecione uma opção:</label>
