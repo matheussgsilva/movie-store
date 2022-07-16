@@ -94,6 +94,11 @@ export const ResumeSubtotal = styled.div`
     border-bottom: 1px solid #999999;
 `;
 
+export const PriceResume = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 export const ResumeTotal = styled.div`
     display: flex;
     justify-content: space-between;
