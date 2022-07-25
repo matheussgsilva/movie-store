@@ -4,12 +4,11 @@ import { useCart } from '../../provider/CartProvider'
 import CartItem from '../../components/CartItem'
 import { FaLock } from 'react-icons/fa'
 import { usePrice } from '../../provider/PriceProvider'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
     const { cart } = useCart()
     const { price } = usePrice()
-
-    console.log("Cart price", price)
 
     return (
         <Theme>
@@ -41,8 +40,10 @@ const Cart = () => {
                     <C.ResumeSubtotal>
                         <span>Subtotal ({cart.length === 1 ? `1 filme` : `${cart.length} filmes`})</span>
                         <C.PriceResume>
-                           
-                            <strong>R$123,00</strong>
+                            {price.map(( movie ) => (
+                                <p key={movie.id}>RS {movie.price}</p>
+                            ))}
+                            <strong>R$ {}</strong>
                         </C.PriceResume>
                     </C.ResumeSubtotal>
                     <C.ResumeTotal>
@@ -55,9 +56,11 @@ const Cart = () => {
                     <C.FinishButton>
                         finalizar compra
                     </C.FinishButton>
-                    <C.ShoppingButton>
-                        continuar comprando
-                    </C.ShoppingButton>
+                    <Link to='/'>
+                        <C.ShoppingButton>
+                            continuar comprando
+                        </C.ShoppingButton>
+                    </Link>
                 </C.Resume>
             </C.Container>
         </Theme>

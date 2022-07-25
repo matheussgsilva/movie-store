@@ -4,6 +4,10 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     padding-top: 90px;
+
+    a {
+        text-decoration: none;
+    }
 `;
 
 export const CartList = styled.div`
@@ -150,5 +154,5 @@ export const FinishButton = styled.button`
 export const ShoppingButton = styled(FinishButton)`
     border: 2px solid #8DD7CF;
     background-color: #FFF;
-    color: #8DD7CF
+    color: #8DD7CF;
 `;
