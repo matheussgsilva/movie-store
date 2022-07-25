@@ -20,7 +20,7 @@ const SidebarCartItem = ({ movie }) => {
                 </C.MovieTitle>
                 <C.PriceInfoArea>
                     <C.MoviePrice>
-                        R$ 12,50
+                        RS {movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2)}
                     </C.MoviePrice>
                     {/*<C.RemoveMovie onClick={handleRemoveCart} >
                         <FaTrash />
