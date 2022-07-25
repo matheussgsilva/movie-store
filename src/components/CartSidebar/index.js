@@ -11,7 +11,10 @@ const CartSidebar = ({ onHidden }) => {
             <C.CartItemsArea>
             <C.Title>Itens no carrinho ( {cart.length === 0 ? 'vazio' : cart.length} )</C.Title>
             {cart.map(( movie ) => (
-                <SidebarCartItem movie={movie} />
+                <SidebarCartItem 
+                    key={movie.id}
+                    movie={movie} 
+                />
             ))}
             </C.CartItemsArea>
             <C.ButtonArea>
