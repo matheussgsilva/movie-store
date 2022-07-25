@@ -4,12 +4,15 @@ import * as C from './styles'
 import { FaHeart, FaStar, FaInfoCircle } from 'react-icons/fa'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
+import { usePrice } from '../../provider/PriceProvider'
 
 const MovieCard = ({ movie }) => {
     const [isFavorite, setIsFavorite] = useState(false)
     const [isAddCart, setIsAddCart] = useState(false)
+    const moviePrice = movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2)
     const { favoriteMovies, setFavoriteMovies } = useApp()
     const { cart, setCart } = useCart([])
+    const { price, setPrice } = usePrice([])
 
     useEffect(() => {
         favoriteMovies.map((favoriteMovie) => {
@@ -46,12 +49,21 @@ const MovieCard = ({ movie }) => {
             let newCartList = cart.filter(item => (item.id !== movie.id))
             setCart(newCartList)
             setIsAddCart(false)
+            let newPrice = [...price];
+            let filteredPrice = newPrice.filter(item => (item.id !== movie.id))
+            setPrice(filteredPrice)
         }
         else {
             let newCartList = [...cart]
             newCartList.push(movie)
             setCart(newCartList)
             setIsAddCart(true)
+            let newPrice = [...price];
+            let filteredPrice = newPrice.filter(item => (item.id !== movie.id))
+            filteredPrice.push({
+                id: movie.id,
+                price: moviePrice})
+            setPrice(filteredPrice)
         }
     }
 
