@@ -19,10 +19,11 @@ const CartItem = ({ movie }) => {
 
     useEffect(() => {
         let newPrice = [...price];
-        newPrice.push({
+        let filteredPrice = newPrice.filter(item => (item.id !== movie.id))
+        filteredPrice.push({
             id: movie.id,
             price: moviePrice})
-        setPrice(moviePrice)
+        setPrice(filteredPrice)
     }, [moviePrice])
 
     const handleRemoveMovie = () => {
