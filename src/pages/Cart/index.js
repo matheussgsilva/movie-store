@@ -40,8 +40,13 @@ const Cart = () => {
                     <C.ResumeSubtotal>
                         <span>Subtotal ({cart.length === 1 ? `1 filme` : `${cart.length} filmes`})</span>
                         <C.PriceResume>
-                            {price.map(( movie ) => (
-                                <p key={movie.id}>RS {movie.price}</p>
+                            {cart.map(( movie ) => (
+                                <p key={movie.id}>
+                                    RS {movie.cart === 'rent' ? 
+                                        movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2)
+                                        : ((movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))*1.5).toFixed(2)
+                                    }
+                                </p>
                             ))}
                             <strong>R$ {}</strong>
                         </C.PriceResume>
