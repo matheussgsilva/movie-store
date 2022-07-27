@@ -55,7 +55,7 @@ const MovieCard = ({ movie }) => {
         }
         else {
             let newCartList = [...cart]
-            newCartList.push(movie)
+            newCartList.push({...movie, cart: 'rent'})
             setCart(newCartList)
             setIsAddCart(true)
             let newPrice = [...price];
