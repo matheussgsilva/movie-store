@@ -12,8 +12,29 @@ const CartItem = ({ movie }) => {
     const handlePrice = (e) => {
         if(e.target.value === 'buy') {
             setMoviePrice((moviePrice*1.5).toFixed(2))
+
+            const index = cart.findIndex( (item) => item.id === movie.id)
+
+            const newCart = [...cart];
+
+            newCart[index] = {
+                ...movie,
+                cart: 'buy'
+            }
+            console.log('change', newCart)
+
         } else {
             setMoviePrice(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))
+
+            const index = cart.findIndex( (item) => item.id === movie.id)
+            
+            const newCart = [...cart];
+    
+            newCart[index] = {
+                ...movie,
+                cart: 'rent'
+            }
+            console.log('change', newCart)
         }
     }
 
