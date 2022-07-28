@@ -89,7 +89,7 @@ export const SelectArea = styled.div`
     }
 `;
 
-export const MovieValue = styled.span`
+export const MovieValue = styled.p`
     font-size: 0.9rem;
     margin-top: 15px;
 
@@ -97,4 +97,9 @@ export const MovieValue = styled.span`
         font-size: 1rem;
         font-weight: bold;
     }
+`;
+
+export const EmphText = styled.span`
+    font-size: 0.9rem;
+    font-weight: bold;
 `;

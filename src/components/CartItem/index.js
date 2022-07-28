@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { FaStar, FaTrash } from 'react-icons/fa'
 import { useCart } from '../../provider/CartProvider'
 
-{/* Add newCart in CartProvider */}
-
 const CartItem = ({ movie }) => {
     const { cart, setCart } = useCart()
     const [moviePrice, setMoviePrice] = useState(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))
@@ -21,6 +19,8 @@ const CartItem = ({ movie }) => {
                 ...movie,
                 cart: 'buy'
             }
+
+            setCart(newCart)
         } else {
             setMoviePrice(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))
 
@@ -32,6 +32,7 @@ const CartItem = ({ movie }) => {
                 ...movie,
                 cart: 'rent'
             }
+            setCart(newCart)
         }
     }
 
@@ -46,13 +47,19 @@ const CartItem = ({ movie }) => {
             <C.PosterArea src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
             <C.InfoArea>
                 <C.MovieTitle>{movie.title}</C.MovieTitle>
-                <C.OriginalMovieTitle><strong>Título original: </strong>{movie.original_title}</C.OriginalMovieTitle>
+                <C.OriginalMovieTitle>
+                    <C.EmphText>Título original: </C.EmphText>
+                    {movie.original_title}
+                </C.OriginalMovieTitle>
                 <C.RateArea>
-                    <strong>Avaliação: </strong>
+                    <C.EmphText>Avaliação: </C.EmphText>
                     <span>{movie.vote_average}</span>
                     <i><FaStar /></i>
                 </C.RateArea>
-                <C.ReleaseDate><strong>Ano de lançamento: </strong>{movie.release_date.slice(0,4)}</C.ReleaseDate>
+                <C.ReleaseDate>
+                    <C.EmphText>Ano de lançamento: </C.EmphText>
+                    {movie.release_date.slice(0,4)}
+                </C.ReleaseDate>
                 <C.Remove onClick={handleRemoveMovie}>
                     <FaTrash /> Remover Filme
                 </C.Remove>
