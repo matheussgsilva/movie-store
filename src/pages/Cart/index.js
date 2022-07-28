@@ -3,12 +3,10 @@ import Theme from '../../components/Theme'
 import { useCart } from '../../provider/CartProvider'
 import CartItem from '../../components/CartItem'
 import { FaLock } from 'react-icons/fa'
-import { usePrice } from '../../provider/PriceProvider'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
     const { cart } = useCart()
-    const { price } = usePrice()
 
     return (
         <Theme>
