@@ -26,6 +26,7 @@ export const InfoArea = styled.div`
 export const MovieTitle = styled.h3`
     margin: 0;
     font-size: 1.2rem;
+    color: #333333;
 `;
 
 export const OriginalMovieTitle = styled.p`
