@@ -1,14 +1,15 @@
 import * as C from './styles'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaStar, FaTrash } from 'react-icons/fa'
 import { useCart } from '../../provider/CartProvider'
 
 const CartItem = ({ movie }) => {
     const { cart, setCart } = useCart()
     const [moviePrice, setMoviePrice] = useState(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))
+    const [cartType, setCartType] = useState(movie.cart)
 
-    const handlePrice = (e) => {
-        if(e.target.value === 'buy') {
+    useEffect(() => {
+        if(cartType === 'buy') {
             setMoviePrice((moviePrice*1.5).toFixed(2))
 
             const index = cart.findIndex( (item) => item.id === movie.id)
@@ -34,7 +35,7 @@ const CartItem = ({ movie }) => {
             }
             setCart(newCart)
         }
-    }
+    }, [cartType])
 
     const handleRemoveMovie = () => {
         let newCartList = [...cart]
@@ -66,10 +67,16 @@ const CartItem = ({ movie }) => {
             </C.InfoArea>
             <C.SelectArea>
                 <label>Selecione uma opção:</label>
-                <select onChange={handlePrice}>
-                    <option value="rent">Alugar</option>
+                {cartType === 'rent' ?
+                <select onChange={(e) => setCartType(e.target.value)}>
+                    <option value="rent" selected>Alugar</option>
                     <option value="buy">Compar</option>
                 </select>
+                :   <select onChange={(e) => setCartType(e.target.value)}>
+                        <option value="rent">Alugar</option>
+                        <option value="buy" selected>Compar</option>
+                    </select>
+                }
                 <C.MovieValue>Valor: <br/><strong>R$ {moviePrice}</strong></C.MovieValue>
             </C.SelectArea>
         </C.Container>
