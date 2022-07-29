@@ -7,6 +7,11 @@ import { Link } from 'react-router-dom'
 
 const Cart = () => {
     const { cart } = useCart()
+  
+    const totalPrice = cart.reduce(getTotal, 0)
+    function getTotal(total, movie) {
+    return total + Number(movie.cart === 'rent' ? movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2) : ((movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))*1.5).toFixed(2))
+    }
 
     return (
         <Theme>
@@ -46,14 +51,13 @@ const Cart = () => {
                                     }
                                 </p>
                             ))}
-                            <strong>R$ {}</strong>
                         </C.PriceResume>
                     </C.ResumeSubtotal>
                     <C.ResumeTotal>
                         <span>Total</span>
                         <C.TotalValue>
-                            <p><strong>R$123,00</strong></p>
-                            <p>em até 6x de <span>RS21,00</span></p>
+                            <p><strong>R$ {totalPrice.toFixed(2)}</strong></p>
+                            <p>em até 6x de <span>R$ {(totalPrice.toFixed(2)/6).toFixed(2)}</span></p>
                         </C.TotalValue>
                     </C.ResumeTotal>
                     <C.FinishButton>
