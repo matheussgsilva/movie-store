@@ -4,6 +4,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     padding-top: 90px;
+    margin-bottom: 20px;
 
     a {
         text-decoration: none;
@@ -12,6 +13,7 @@ export const Container = styled.div`
 
 export const CartList = styled.div`
     padding-top: 20px;
+    width: 40%;
 `;
 
 export const CartListHeader = styled.div`
@@ -19,7 +21,6 @@ export const CartListHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     background-color: #DDD;
-    max-width: 800px;
     padding: 10px;
     box-sizing: border-box;
 `;
@@ -66,7 +67,7 @@ export const CartListSecurity = styled.div`
 export const Resume = styled.div`
     padding-top: 20px;
     margin-left: 10px;
-    position: sticky;
+    width:20%;
 `;
 
 export const ResumeHeader = styled.div`
@@ -74,7 +75,6 @@ export const ResumeHeader = styled.div`
     justify-content: flex-start;
     align-items: center;
     background-color: #DDD;
-    width: 300px;
     padding: 20px 10px;
     box-sizing: border-box;    
 
