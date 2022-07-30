@@ -4,6 +4,7 @@ import { useCart } from '../../provider/CartProvider'
 import CartItem from '../../components/CartItem'
 import { FaLock } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import CartPayment from '../../components/CartPayment'
 
 const Cart = () => {
     const { cart } = useCart()
@@ -70,6 +71,7 @@ const Cart = () => {
                     </Link>
                 </C.Resume>
             </C.Container>
+            <CartPayment />
         </Theme>
     )
 }
