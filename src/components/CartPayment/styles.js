@@ -78,4 +78,67 @@ export const CardArea = styled.div`
     display: flex;
     flex-direction: column;
     align-content: flex-start;
+    margin-top: 30px;
+`;
+
+export const Card = styled.div`
+    display: flex;
+    justify-content: flex-start;
+`;
+
+export const CardInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    margin-right: 20px;
+    width: 56%;
+`;
+
+export const CardImage = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #DDD;
+    border-radius: 20px;
+    width: 38%;
+    box-sizing: border-box;
+`;
+
+export const CardImageText = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+`;
+
+export const CardImageInfo = styled.span`
+    font-size: 0.8rem;
+    color: #333333;
+    margin-top: 10px;
+`;
+
+export const CardImageLogo = styled.div`
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    color: #DDD;
+`;
+
+export const CardValidationInfo = styled.div`
+    display: flex;
+`;
+
+export const CardExpires = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-right: 20px;
+`;
+
+export const CardExpiresSelect = styled.div`
+    display: flex;
+`;
+
+export const CardCVV = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
