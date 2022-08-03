@@ -71,7 +71,7 @@ const Cart = () => {
                     </Link>
                 </C.Resume>
             </C.Container>
-            <CartPayment />
+            <CartPayment moviePrice={totalPrice} />
         </Theme>
     )
 }
