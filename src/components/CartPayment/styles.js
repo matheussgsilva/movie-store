@@ -72,6 +72,7 @@ export const Select = styled.select`
 
 export const Option = styled.option`
     color: #333333;
+    line-height: 80px;
 `;
 
 export const CardArea = styled.div`
@@ -120,7 +121,7 @@ export const CardImageLogo = styled.div`
     display: flex;
     align-items: center;
     font-size: 2.5rem;
-    color: #DDD;
+    color: ${props => props.cardNumber.length < 4 ? '#DDD' : '#8DD7CF'};
 `;
 
 export const CardValidationInfo = styled.div`
