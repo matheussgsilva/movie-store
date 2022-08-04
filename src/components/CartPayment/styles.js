@@ -143,3 +143,54 @@ export const CardCVV = styled.div`
     display: flex;
     flex-direction: column;
 `;
+
+export const FinishButton = styled.button`
+    display: block;
+    margin-top: 10px;
+    width: 96%;
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color: #8DD7CF;
+    color: #FFF;
+    border: none;
+    cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+    transition: 300ms ease-in-out;
+
+    &:hover {
+        opacity: 0.8;
+    }
+`;
+
+export const MessageArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2%;
+`;
+
+export const Message = styled.p`
+    color: #333333;
+    font-size: 1rem;
+`;
+
+export const MessageIcon = styled.i`
+    color: #333333;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: color 300ms ease-in-out;
+
+    &:hover {
+        color: #8DD7CF;
+    }
+`;
+
+export const BillingArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2%;
+`;

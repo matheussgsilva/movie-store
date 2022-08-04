@@ -1,6 +1,6 @@
 import * as C from './styles'
 import { useState } from 'react'
-import { FaCcVisa } from 'react-icons/fa'
+import { FaCcVisa, FaFileDownload } from 'react-icons/fa'
 
 const CartPayment = ({ moviePrice }) => {
     const [payment, setPayment] = useState('')
@@ -11,6 +11,8 @@ const CartPayment = ({ moviePrice }) => {
     const [cardExpiresMonth, setCardExpiresMonth] = useState('')
     const [cardExpiresYear, setCardExpiresYear] = useState('')
     const [cardCVV, setCardCVV] = useState('')
+    const [cardPayment, setCardPayment] = useState('')
+    const [showMessage, setShowMessage] = useState(false)
 
     console.log(cardExpiresMonth)
 
@@ -57,6 +59,9 @@ const CartPayment = ({ moviePrice }) => {
         return paymentList
     }
 
+    const handleShowMessage = () => {
+        setShowMessage(true)
+    }
 
     return (
         <C.Container>
@@ -91,7 +96,7 @@ const CartPayment = ({ moviePrice }) => {
                 <C.Option value=''>
                         Selecione
                     </C.Option>
-                    <C.Option value='bankSlip'>
+                    <C.Option value='billing'>
                         Boleto bancário
                     </C.Option>
                     <C.Option value='creditCard'>
@@ -176,14 +181,47 @@ const CartPayment = ({ moviePrice }) => {
                         <C.Label>
                             Selecione o parcelamento:
                         </C.Label>
-                        <C.Select>
+                        <C.Select onChange={e => setCardPayment(e.target.value)} >
                         <C.Option value=''>
                                 Selecione
                             </C.Option>
                             {renderPayment()}
                         </C.Select>
                     
+                    <C.FinishButton 
+                        disabled={cardPayment === ''} 
+                        onClick={handleShowMessage}
+                    >
+                        Finalizar
+                    </C.FinishButton>
+                    {showMessage &&
+                    <C.MessageArea>
+                        <C.Message>
+                            Pagamento realizado com sucesso!! Clique no ícone para realizar o download da sua compra.
+                        </C.Message>
+                        <C.MessageIcon>
+                            <FaFileDownload />
+                        </C.MessageIcon>
+                    </C.MessageArea>}
                 </C.CardArea>}
+                {payment === 'billing' &&
+                <C.BillingArea>
+                    <C.FinishButton 
+                        onClick={handleShowMessage}
+                    >
+                        Finalizar
+                    </C.FinishButton>
+                    {showMessage &&
+                    <C.MessageArea>
+                        <C.Message>
+                            Boleto no valor de R$ {(moviePrice).toFixed(2)} gerado com sucesso!! Clique no ícone para realizar o download da sua compra.
+                        </C.Message>
+                        <C.MessageIcon>
+                            <FaFileDownload />
+                        </C.MessageIcon>
+                    </C.MessageArea>}
+                </C.BillingArea>}
+                
             </C.PaymentArea>
         </C.Container>
     )
