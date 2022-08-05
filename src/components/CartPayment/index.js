@@ -13,8 +13,7 @@ const CartPayment = ({ moviePrice }) => {
     const [cardCVV, setCardCVV] = useState('')
     const [cardPayment, setCardPayment] = useState('')
     const [showMessage, setShowMessage] = useState(false)
-
-    console.log(cardExpiresMonth)
+    const [isRotate, setIsRotate] = useState(false)
 
     const renderMonth = () => {
         const monthList = []
@@ -61,6 +60,10 @@ const CartPayment = ({ moviePrice }) => {
 
     const handleShowMessage = () => {
         setShowMessage(true)
+    }
+
+    const handleRotate = () => {
+        setIsRotate(!isRotate)
     }
 
     return (
@@ -127,25 +130,42 @@ const CartPayment = ({ moviePrice }) => {
                                 value={cardName}    
                             />
                         </C.CardInfo>
-                        <C.CardImage>
-                            <C.CardImageText>
-                                <C.CardImageInfo>
-                                    {cardNumber.length === 0 
-                                    ? '0000 0000 0000 0000'
-                                    : cardNumber}
-                                </C.CardImageInfo>
-                                <C.CardImageInfo>
-                                {cardName.length === 0 
-                                    ? 'Nome impresso'
-                                    : cardName}
-                                </C.CardImageInfo>
-                            </C.CardImageText>
-                            <C.CardImageLogo cardNumber={cardNumber} >
-                                <FaCcVisa />
-                            </C.CardImageLogo>
+                        <C.CardImage isRotate={isRotate}>
+                            <C.CardImageFront>
+                                <C.CardImageText>
+                                    <C.CardImageInfo>
+                                        {cardNumber.length === 0 
+                                        ? '0000 0000 0000 0000'
+                                        : cardNumber}
+                                    </C.CardImageInfo>
+                                    <C.CardImageInfo>
+                                    {cardName.length === 0 
+                                        ? 'Nome impresso'
+                                        : cardName}
+                                    </C.CardImageInfo>
+                                </C.CardImageText>
+                                <C.CardImageLogo cardNumber={cardNumber} >
+                                    <FaCcVisa />
+                                </C.CardImageLogo>
+                            </C.CardImageFront>
+                            <C.CardImageBack>
+                                    <C.CardImageInfo>
+                                        {cardExpiresMonth.length === 0 
+                                        ? 'MM/AAAA'
+                                        : `${String(0 + cardExpiresMonth).slice(-2)} / ${cardExpiresYear}`}
+                                    </C.CardImageInfo>
+                                    <C.CardImageInfo>
+                                    {cardCVV.length === 0 
+                                        ? '000'
+                                        : cardCVV}
+                                    </C.CardImageInfo>
+                            </C.CardImageBack>
                         </C.CardImage>
                     </C.Card>
-                    <C.CardValidationInfo>
+                    <C.CardValidationInfo 
+                        onFocus={handleRotate}
+                        onBlur={handleRotate}
+                    >
                         <C.CardExpires>
                             <C.Label>
                                 Vencimento:

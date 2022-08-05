@@ -6,6 +6,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     padding-bottom: 250px;
+    perspective: 200px;
 `;
 
 export const Header = styled.div`
@@ -80,6 +81,7 @@ export const CardArea = styled.div`
     flex-direction: column;
     align-content: flex-start;
     margin-top: 30px;
+    
 `;
 
 export const Card = styled.div`
@@ -96,13 +98,34 @@ export const CardInfo = styled.div`
 `;
 
 export const CardImage = styled.div`
+    width: 38%;
+    height: 150px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: ${props => props.isRotate ? 'rotateY(180deg)' : 'rotateY(0deg)'};
+    transition: transform 600ms cubic-bezier(0.175, 0.885, 0.82, 1.375);
+    
+`;
+
+export const CardImageFront = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 20px;
     border: 1px solid #DDD;
     border-radius: 20px;
-    width: 38%;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: #8DD7CF;
+`;
+
+export const CardImageBack = styled(CardImageFront)`
+    flex-direction: row;
+    align-items: flex-end;
+    transform: rotateY(180deg);
+    background-color: #CCC;
 `;
 
 export const CardImageText = styled.div`
@@ -112,8 +135,9 @@ export const CardImageText = styled.div`
 `;
 
 export const CardImageInfo = styled.span`
-    font-size: 0.8rem;
-    color: #333333;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #FFF;
     margin-top: 10px;
 `;
 
@@ -121,7 +145,7 @@ export const CardImageLogo = styled.div`
     display: flex;
     align-items: center;
     font-size: 2.5rem;
-    color: ${props => props.cardNumber.length < 4 ? '#DDD' : '#8DD7CF'};
+    color: ${props => props.cardNumber.length < 4 ? '#DDD' : '#FFF'};
 `;
 
 export const CardValidationInfo = styled.div`
