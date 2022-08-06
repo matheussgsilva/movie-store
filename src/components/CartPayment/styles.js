@@ -119,6 +119,7 @@ export const CardImageFront = styled.div`
     position: absolute;
     backface-visibility: hidden;
     background-color: #8DD7CF;
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
 `;
 
 export const CardImageBack = styled(CardImageFront)`

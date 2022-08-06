@@ -1,5 +1,5 @@
 import * as C from './styles'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaCcVisa, FaFileDownload } from 'react-icons/fa'
 
 const CartPayment = ({ moviePrice }) => {
@@ -65,6 +65,10 @@ const CartPayment = ({ moviePrice }) => {
     const handleRotate = () => {
         setIsRotate(!isRotate)
     }
+
+    useEffect(() => {
+        setShowMessage(!showMessage)
+    }, [payment])
 
     return (
         <C.Container>
