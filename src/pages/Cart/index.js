@@ -1,4 +1,5 @@
 import * as C from './styles'
+import { useState, useRef } from 'react'
 import Theme from '../../components/Theme'
 import { useCart } from '../../provider/CartProvider'
 import CartItem from '../../components/CartItem'
@@ -7,11 +8,21 @@ import { Link } from 'react-router-dom'
 import CartPayment from '../../components/CartPayment'
 
 const Cart = () => {
+    const [showPayment, setShowPayment] = useState(false)
     const { cart } = useCart()
+    const ServicesRef = useRef(null)
   
     const totalPrice = cart.reduce(getTotal, 0)
     function getTotal(total, movie) {
     return total + Number(movie.cart === 'rent' ? movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2) : ((movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))*1.5).toFixed(2))
+    }
+
+    const handleShowPayment = () => {
+        setShowPayment(true)
+        window.scrollTo({
+            top: ServicesRef.current.offsetTop,
+            behavior: "smooth",
+          })
     }
 
     return (
@@ -61,7 +72,7 @@ const Cart = () => {
                             <p>em até 6x de <span>R$ {(totalPrice.toFixed(2)/6).toFixed(2)}</span></p>
                         </C.TotalValue>
                     </C.ResumeTotal>
-                    <C.FinishButton>
+                    <C.FinishButton onClick={handleShowPayment}>
                         finalizar compra
                     </C.FinishButton>
                     <Link to='/'>
@@ -71,7 +82,8 @@ const Cart = () => {
                     </Link>
                 </C.Resume>
             </C.Container>
-            <CartPayment moviePrice={totalPrice} />
+            {showPayment &&
+                <CartPayment moviePrice={totalPrice} ref={ServicesRef}/>}
         </Theme>
     )
 }
