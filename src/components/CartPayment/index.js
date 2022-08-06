@@ -58,14 +58,6 @@ const CartPayment = ({ moviePrice }) => {
         return paymentList
     }
 
-    const handleShowMessage = () => {
-        setShowMessage(true)
-    }
-
-    const handleRotate = () => {
-        setIsRotate(!isRotate)
-    }
-
     useEffect(() => {
         setShowMessage(!showMessage)
     }, [payment])
@@ -167,8 +159,8 @@ const CartPayment = ({ moviePrice }) => {
                         </C.CardImage>
                     </C.Card>
                     <C.CardValidationInfo 
-                        onFocus={handleRotate}
-                        onBlur={handleRotate}
+                        onFocus={() => setIsRotate(!isRotate)}
+                        onBlur={() => setIsRotate(!isRotate)}
                     >
                         <C.CardExpires>
                             <C.Label>
@@ -214,7 +206,7 @@ const CartPayment = ({ moviePrice }) => {
                     
                     <C.FinishButton 
                         disabled={cardPayment === ''} 
-                        onClick={handleShowMessage}
+                        onClick={() => setShowMessage(true)}
                     >
                         Finalizar
                     </C.FinishButton>
@@ -231,7 +223,7 @@ const CartPayment = ({ moviePrice }) => {
                 {payment === 'billing' &&
                 <C.BillingArea>
                     <C.FinishButton 
-                        onClick={handleShowMessage}
+                        onClick={() => setShowMessage(true)}
                     >
                         Finalizar
                     </C.FinishButton>
