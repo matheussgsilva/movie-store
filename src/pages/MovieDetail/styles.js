@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     display: flex;
+    flex-direction: column;
     overflow-y: hidden;
     padding-top: 90px;
     padding-bottom: 25px;
@@ -89,4 +90,22 @@ export const FavoriteIcon = styled.i`
 
 export const CartIcon = styled.i`
     color: ${props => props.isAddCart ? '#F5DC00' : '#FFF'};
+`;
+
+export const SimilarMovies = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const Title = styled.h2`
+    color: #4B5C6B;
+    margin-left: 10px;
+`;
+
+export const List = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    padding: 0px 20px;
 `;

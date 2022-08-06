@@ -6,9 +6,11 @@ import tmdb from '../../lib/tmdb'
 import Theme from '../../components/Theme'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
+import MovieCard from '../../components/MovieCard'
 
 const MovieDetail = () => {
     const [movieDetail, setMovieDetail] = useState([])
+    const [similarMovies, setSimilarMovies] = useState([])
     const [isFavorite, setIsFavorite] = useState(false)
     const [isAddCart, setIsAddCart] = useState(false)
     const { favoriteMovies, setFavoriteMovies } = useApp()
@@ -20,6 +22,12 @@ const MovieDetail = () => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb}&language=pt-BR`)
         .then(res => res.json())
         .then(data => setMovieDetail(data))
+    }, [])
+
+    useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${tmdb}&language=pt-BR&page=1`)
+        .then(res => res.json())
+        .then(data => setSimilarMovies(data.results))
     }, [])
 
     useEffect(() => {
@@ -100,6 +108,18 @@ const MovieDetail = () => {
                     </C.InfoArea>
                         <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />
                 </C.Detail>
+                <C.SimilarMovies>
+                    <C.Title>Fimes similares</C.Title>
+                    <C.List>
+                        {similarMovies.map(( movie ) => (
+                            <MovieCard 
+                                key={movie.id} 
+                                movie={movie}
+                                favorite={isFavorite}
+                            />
+                        ))}
+                    </C.List>
+                </C.SimilarMovies>
             </C.Container>
         </Theme>
     )
