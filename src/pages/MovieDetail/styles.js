@@ -63,7 +63,7 @@ export const MovieOverview = styled.p`
     width: 30vw;
 `;
 
-export const FavoriteIcon = styled.button`
+export const Button = styled.button`
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -76,12 +76,17 @@ export const FavoriteIcon = styled.button`
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
+    margin-bottom: 10px;
 
     &:hover {
         opacity: 0.8;
     }
+`;
 
-    i {
-        color: ${props => props.isFavorite ? '#FA4C37' : '#FFF'};
-    }
+export const FavoriteIcon = styled.i`
+    color: ${props => props.isFavorite ? '#FA4C37' : '#FFF'};
+`;
+
+export const CartIcon = styled.i`
+    color: ${props => props.isAddCart ? '#F5DC00' : '#FFF'};
 `;

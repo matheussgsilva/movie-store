@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as C from './styles'
-import { FaHeart, FaStar } from 'react-icons/fa'
+import { FaHeart, FaStar, FaShoppingCart } from 'react-icons/fa'
 import tmdb from '../../lib/tmdb'
 import Theme from '../../components/Theme'
+import { useApp } from '../../provider/AppProvider'
+import { useCart } from '../../provider/CartProvider'
 
 const MovieDetail = () => {
     const [movieDetail, setMovieDetail] = useState([])
     const [isFavorite, setIsFavorite] = useState(false)
+    const [isAddCart, setIsAddCart] = useState(false)
+    const { favoriteMovies, setFavoriteMovies } = useApp()
+    const { cart, setCart } = useCart([])
     const { id } = useParams()
     const release = String(movieDetail.release_date)
 
@@ -17,8 +22,50 @@ const MovieDetail = () => {
         .then(data => setMovieDetail(data))
     }, [])
 
+    useEffect(() => {
+        favoriteMovies.map((favoriteMovie) => {
+            if (favoriteMovie.id === Number(id)) {
+                setIsFavorite(true)
+            }
+        })
+    }, [])
+
+    useEffect(() => {
+        cart.map((cartMovie) => {
+            if (cartMovie.id === Number(id)) {
+                setIsAddCart(true)
+            }
+        })
+    }, [])
+
+    console.log(cart)
+
     const handleFavorite = () => {
-        setIsFavorite(!isFavorite)
+        if (isFavorite) {
+            let newFavorite = favoriteMovies.filter(item => (item.id !== Number(id)))
+            setFavoriteMovies(newFavorite)
+            setIsFavorite(false)
+        }
+        else {
+            let newFavorite = [...favoriteMovies]
+            newFavorite.push(movieDetail)
+            setFavoriteMovies(newFavorite)
+            setIsFavorite(true)
+        }
+    }
+
+    const handleAddCart = () => {
+        if (isAddCart) {
+            let newCartList = cart.filter(item => (item.id !== Number(id)))
+            setCart(newCartList)
+            setIsAddCart(false)
+        }
+        else {
+            let newCartList = [...cart]
+            newCartList.push({...movieDetail, cart: 'rent'})
+            setCart(newCartList)
+            setIsAddCart(true)
+        }
     }
 
     return (
@@ -29,7 +76,7 @@ const MovieDetail = () => {
                         <C.MovieTitle>{movieDetail.title}</C.MovieTitle>
                         <C.MovieInfo>
                             <span>
-                                {movieDetail.vote_average}
+                                {Number(movieDetail.vote_average).toFixed(1)}
                             </span>
                             <i>
                                 <FaStar />
@@ -42,11 +89,14 @@ const MovieDetail = () => {
                             </C.MovieLink>                    
                         }
                         <C.MovieOverview>{movieDetail.overview}</C.MovieOverview>
-                        <C.FavoriteIcon 
-                            onClick={handleFavorite}
-                            isFavorite={isFavorite}>
-                                {isFavorite ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'} <i><FaHeart /></i>
-                        </C.FavoriteIcon>
+                        <C.Button onClick={handleFavorite}>
+                                {isFavorite ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'} 
+                                <C.FavoriteIcon isFavorite={isFavorite}><FaHeart /></C.FavoriteIcon>
+                        </C.Button>
+                        <C.Button onClick={handleAddCart}>
+                                {isFavorite ? 'Remover do carrinho' : 'Adicionar ao carrinho'} 
+                                <C.CartIcon isAddCart={isAddCart}><FaShoppingCart /></C.CartIcon>
+                        </C.Button>
                     </C.InfoArea>
                         <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />
                 </C.Detail>
