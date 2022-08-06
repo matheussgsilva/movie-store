@@ -103,15 +103,17 @@ const MovieCard = ({ movie }) => {
     return (
         <C.Container>
             <C.ContentArea>
-                <C.PosterArea>
-                    <Link to={`/detail/${movie.id}`}>
-                        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
-                    </Link>
+                <C.PosterArea>                    
+                    <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />                    
                     <span>{String(movie.release_date).slice(0,4)}</span>
                     <C.FavoriteIcon favorite={isFavorite} onClick={handleFavoriteMovie}>
                         <FaHeart />
                     </C.FavoriteIcon>
-                    <i className='info'><FaInfoCircle /></i>
+                    <Link to={`/detail/${movie.id}`}>
+                        <C.InfoIcon>
+                            <FaInfoCircle />
+                        </C.InfoIcon>
+                    </Link>
                 </C.PosterArea>
                 <C.InfoArea>
                     <h3>{movie.title.length > 30 ? `${movie.title.slice(0,30)}...` : movie.title}</h3>

@@ -41,14 +41,19 @@ export const PosterArea = styled.div`
         border-radius: 5px 5px 0px 0px;
         font-size: 0.8rem;
     }
+`;
 
-    .info {
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: 10px;
-        color: #FFF;
-        cursor: pointer;
+export const InfoIcon = styled.i`
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    color: #FFF;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover {
+        color: #F5DC00;
     }
 `;
 
