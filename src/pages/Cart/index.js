@@ -1,16 +1,17 @@
 import * as C from './styles'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Theme from '../../components/Theme'
 import { useCart } from '../../provider/CartProvider'
 import CartItem from '../../components/CartItem'
 import { FaLock } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import CartPayment from '../../components/CartPayment'
+import { useScrollBy } from "react-use-window-scroll"
 
 const Cart = () => {
     const [showPayment, setShowPayment] = useState(false)
     const { cart } = useCart()
-    const ServicesRef = useRef(null)
+    const scrollBy = useScrollBy()
   
     const totalPrice = cart.reduce(getTotal, 0)
     function getTotal(total, movie) {
@@ -19,10 +20,7 @@ const Cart = () => {
 
     const handleShowPayment = () => {
         setShowPayment(true)
-        window.scrollTo({
-            top: ServicesRef.current.offsetTop,
-            behavior: "smooth",
-          })
+        scrollBy({ top: 2000, behavior: "smooth" })
     }
 
     return (
@@ -83,7 +81,7 @@ const Cart = () => {
                 </C.Resume>
             </C.Container>
             {showPayment &&
-                <CartPayment moviePrice={totalPrice} ref={ServicesRef}/>}
+                <CartPayment moviePrice={totalPrice}/>}
         </Theme>
     )
 }
