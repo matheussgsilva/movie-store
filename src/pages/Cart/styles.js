@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
     display: flex;
     justify-content: center;
-    padding-top: 90px;
+    padding-top: 70px;
     margin-bottom: 20px;
 
     a {

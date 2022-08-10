@@ -5,9 +5,8 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 15vh;
     background-color: #8DD7CF;
-    padding: 0px 40px;
+    padding: 5px 40px;
     position: fixed;
     z-index: 1;
 `;
@@ -23,7 +22,7 @@ export const InputArea = styled.div`
     display: flex;
     align-items: center;
     width: 30%;
-    height: 40%;
+    height: 40px;
     box-sizing: border-box;
     margin-left: -30px;
 
@@ -95,7 +94,7 @@ export const CartNumber = styled.span`
     text-decoration: none;
     position: fixed;
     font-size: 14px;
-    top: 25px;
+    top: 17px;
     right: 37px;
     transform: ${props => props.cart.length === 0 ? 'scale(0)' : 'scale(1)'};
     transition: transform 300ms ease-in;

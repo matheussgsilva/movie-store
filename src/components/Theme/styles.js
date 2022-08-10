@@ -23,3 +23,12 @@ export const PopUp = styled.div`
 export const Page = styled.div`
 
 `;
+
+export const Footer = styled.footer`
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    background-color: #8DD7CF;
+    margin-top: -1px;
+    bottom: 0;
+`;
