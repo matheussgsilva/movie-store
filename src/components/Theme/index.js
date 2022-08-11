@@ -25,7 +25,6 @@ const Theme = ({ children }) => {
             <C.Page>
                 {children}
             </C.Page>
-            <C.Footer></C.Footer>
         </C.Container>
     )
 }

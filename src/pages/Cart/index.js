@@ -1,6 +1,5 @@
 import * as C from './styles'
 import { useState } from 'react'
-import Theme from '../../components/Theme'
 import { useCart } from '../../provider/CartProvider'
 import CartItem from '../../components/CartItem'
 import { FaLock } from 'react-icons/fa'
@@ -24,7 +23,7 @@ const Cart = () => {
     }
 
     return (
-        <Theme>
+        <>
             <C.Container>
                 <C.CartList>
                     <C.CartListHeader>
@@ -82,7 +81,7 @@ const Cart = () => {
             </C.Container>
             {showPayment &&
                 <CartPayment moviePrice={totalPrice}/>}
-        </Theme>
+        </>
     )
 }
 

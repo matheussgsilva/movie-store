@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import * as C from './styles'
 import { FaHeart, FaStar, FaShoppingCart } from 'react-icons/fa'
 import tmdb from '../../lib/tmdb'
-import Theme from '../../components/Theme'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
 import MovieCard from '../../components/MovieCard'
@@ -77,51 +76,49 @@ const MovieDetail = () => {
     }
 
     return (
-        <Theme>
-            <C.Container>
-                <C.Detail>
-                    <C.InfoArea>
-                        <C.MovieTitle>{movieDetail.title}</C.MovieTitle>
-                        <C.MovieInfo>
-                            <span>
-                                {Number(movieDetail.vote_average).toFixed(1)}
-                            </span>
-                            <i>
-                                <FaStar />
-                            </i>
-                            <span>{release.slice(0,4)}</span>
-                        </C.MovieInfo>
-                        {movieDetail.homepage &&
-                            <C.MovieLink href={`${movieDetail.homepage}`} target="_blank" rel='noreferrer'>
-                                Acessar site oficial
-                            </C.MovieLink>                    
-                        }
-                        <C.MovieOverview>{movieDetail.overview}</C.MovieOverview>
-                        <C.Button onClick={handleFavorite}>
-                                {isFavorite ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'} 
-                                <C.FavoriteIcon isFavorite={isFavorite}><FaHeart /></C.FavoriteIcon>
-                        </C.Button>
-                        <C.Button onClick={handleAddCart}>
-                                {isFavorite ? 'Remover do carrinho' : 'Adicionar ao carrinho'} 
-                                <C.CartIcon isAddCart={isAddCart}><FaShoppingCart /></C.CartIcon>
-                        </C.Button>
-                    </C.InfoArea>
-                        <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />
-                </C.Detail>
-                <C.SimilarMovies>
-                    <C.Title>Fimes similares</C.Title>
-                    <C.List>
-                        {similarMovies.map(( movie ) => (
-                            <MovieCard 
-                                key={movie.id} 
-                                movie={movie}
-                                favorite={isFavorite}
-                            />
-                        ))}
-                    </C.List>
-                </C.SimilarMovies>
-            </C.Container>
-        </Theme>
+        <C.Container>
+            <C.Detail>
+                <C.InfoArea>
+                    <C.MovieTitle>{movieDetail.title}</C.MovieTitle>
+                    <C.MovieInfo>
+                        <span>
+                            {Number(movieDetail.vote_average).toFixed(1)}
+                        </span>
+                        <i>
+                            <FaStar />
+                        </i>
+                        <span>{release.slice(0,4)}</span>
+                    </C.MovieInfo>
+                    {movieDetail.homepage &&
+                        <C.MovieLink href={`${movieDetail.homepage}`} target="_blank" rel='noreferrer'>
+                            Acessar site oficial
+                        </C.MovieLink>                    
+                    }
+                    <C.MovieOverview>{movieDetail.overview}</C.MovieOverview>
+                    <C.Button onClick={handleFavorite}>
+                            {isFavorite ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'} 
+                            <C.FavoriteIcon isFavorite={isFavorite}><FaHeart /></C.FavoriteIcon>
+                    </C.Button>
+                    <C.Button onClick={handleAddCart}>
+                            {isFavorite ? 'Remover do carrinho' : 'Adicionar ao carrinho'} 
+                            <C.CartIcon isAddCart={isAddCart}><FaShoppingCart /></C.CartIcon>
+                    </C.Button>
+                </C.InfoArea>
+                    <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />
+            </C.Detail>
+            <C.SimilarMovies>
+                <C.Title>Fimes similares</C.Title>
+                <C.List>
+                    {similarMovies.map(( movie ) => (
+                        <MovieCard 
+                            key={movie.id} 
+                            movie={movie}
+                            favorite={isFavorite}
+                        />
+                    ))}
+                </C.List>
+            </C.SimilarMovies>
+        </C.Container>
     )
 }
 
