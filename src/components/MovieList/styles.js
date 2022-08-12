@@ -14,9 +14,15 @@ export const Title = styled.h2`
 
 export const List = styled.div`
     display: flex;
+`;
+
+export const MovieList = styled.div`
+    display: flex;
     column-gap: 20px;
     padding-left: 70px;
     position: relative;
+    transform: ${props => props.position ? `translateX(${props.position}px)` : `translateX(0)`};
+    transition: transform 300ms ease-in-out;
 `;
 
 export const MoveArrowLeft = styled.div`
@@ -35,7 +41,6 @@ export const MoveArrowLeft = styled.div`
     transition: 300ms ease-in-out;
     position: absolute;
     z-index: 1;
-    margin-left: -70px;
     opacity: 0.75;
 
     &:hover {
