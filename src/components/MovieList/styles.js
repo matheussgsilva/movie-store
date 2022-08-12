@@ -15,5 +15,36 @@ export const Title = styled.h2`
 export const List = styled.div`
     display: flex;
     column-gap: 20px;
-    padding: 0px 20px;
+    padding-left: 70px;
+    position: relative;
+`;
+
+export const MoveArrowLeft = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #8DD7CF;
+    background-color: #DEE;
+    padding: 10px;
+    border-radius: 0px 5px 5px 0px;
+    box-sizing: border-box;
+    height: 340px;
+    box-shadow: 8px 2px 10px 0px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+    position: absolute;
+    z-index: 1;
+    margin-left: -70px;
+    opacity: 0.75;
+
+    &:hover {
+        transform: scale(1.02);
+        opacity: 1;
+    }
+`;
+
+export const MoveArrowRight = styled(MoveArrowLeft)`
+    right: 0;
+    box-shadow: -8px 2px 10px 0px rgba(0,0,0,0.5);
 `;

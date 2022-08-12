@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import * as C from './styles'
 import MovieCard from '../MovieCard'
 import tmdb from '../../lib/tmdb'
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 const MovieList = ({ moviesId, sessionTitle }) => {
     const [movies, setMovies] = useState([])
@@ -16,12 +17,18 @@ const MovieList = ({ moviesId, sessionTitle }) => {
         <C.Container>
             <C.Title>{sessionTitle}</C.Title>
             <C.List>
+                <C.MoveArrowLeft>
+                    <FaArrowLeft />
+                </C.MoveArrowLeft>
                 {movies.map(( movie ) => (
                     <MovieCard 
                         key={movie.id} 
                         movie={movie}
                     />
                 ))}
+                <C.MoveArrowRight>
+                    <FaArrowRight />
+                </C.MoveArrowRight>
             </C.List>
         </C.Container>
     )
