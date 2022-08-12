@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import * as C from './styles'
 import { FaShoppingCart } from 'react-icons/fa'
-import { FaHeart } from 'react-icons/fa'
-import { FaSearch } from 'react-icons/fa'
+import { FaHeart, FaHome, FaSearch } from 'react-icons/fa'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
 
@@ -23,11 +22,11 @@ const Navbar = ({ showCartSidebar }) => {
 
     return (
         <C.Container>
-            <C.LogoArea>
-                <Link to={'/'}>
-                    <h2>LOGO</h2>
-                </Link>
-            </C.LogoArea>
+            <Link to={'/'}>
+                <C.HomeIcon>
+                    <FaHome />
+                </C.HomeIcon>
+            </Link>
             <C.InputArea>
                 <input 
                     placeholder='Pesquisar'

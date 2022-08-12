@@ -6,16 +6,14 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     background-color: #8DD7CF;
-    padding: 5px 40px;
+    padding: 18px 40px;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
 `;
 
-export const LogoArea = styled.div`
-    h2{
-        color: #FFF;
-        text-decoration: none;
-    }
+export const HomeIcon = styled.i`
+    font-size: 2rem;
+    color: #fff;
 `;
 
 export const InputArea = styled.div`
