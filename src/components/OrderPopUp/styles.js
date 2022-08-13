@@ -10,7 +10,7 @@ export const Container = styled.div`
     background-color: #FFF;
     opacity: ${props => props.showPopUp ? '1' : '0'};
     transition: 250ms ease-in;
-    padding: 20px 15px;
+    padding: 10px 15px;
     box-sizing: border-box;
     border-radius: 5px;
     border: 1px solid #4B5C6B;
@@ -31,12 +31,12 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h3`
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0;
 `;
 
 export const Movie = styled.p`
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-align: center;
     margin: 0;
     margin-top: 5px;
