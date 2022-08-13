@@ -7,12 +7,23 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 const MovieList = ({ moviesId, sessionTitle }) => {
     const [movies, setMovies] = useState([])
     const [moveList, setMoveList] = useState(0)
+    const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${tmdb}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${moviesId}&with_watch_monetization_types=flatrate`)
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${tmdb}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_genres=${moviesId}&with_watch_monetization_types=flatrate`)
         .then(res => res.json())
-        .then(data => setMovies(data.results))
-      }, [])
+        .then(data => setMovies((prevMovieList) => [...prevMovieList, ...data.results]))
+      }, [currentPage])
+
+    useEffect(() => {
+    const intersectionObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+        setCurrentPage((currentValue) => currentValue + 1)
+        }
+    })
+    intersectionObserver.observe(document.querySelector('#listObserver'))
+    return () => intersectionObserver.disconnect();
+    }, [])
 
     const handleMoveRight = () => {
         setMoveList(moveList - 200)
@@ -39,6 +50,7 @@ const MovieList = ({ moviesId, sessionTitle }) => {
                             movie={movie}
                         />
                     ))}
+                    <C.Observer id='listObserver'></C.Observer>
                 </C.MovieList>
                 <C.MoveArrowRight onClick={handleMoveRight}>
                     <FaChevronRight />

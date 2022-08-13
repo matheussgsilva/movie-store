@@ -18,6 +18,7 @@ export const List = styled.div`
 
 export const MovieList = styled.div`
     display: flex;
+    align-items: center;
     column-gap: 20px;
     padding-left: 70px;
     position: relative;
@@ -52,4 +53,37 @@ export const MoveArrowLeft = styled.div`
 export const MoveArrowRight = styled(MoveArrowLeft)`
     right: 0;
     box-shadow: -8px 2px 10px 0px rgba(0,0,0,0.5);
+`;
+
+export const Observer = styled.div`
+    display: block;
+    height: 40px;
+    width: 40px;
+    border: 3px solid #8DD7CF;
+    border-right: transparent;
+    border-radius: 50%;
+    animation: 0.5s rotate infinite;
+
+
+    @keyframes rotate {
+        0% {
+        transform: rotate(0deg);
+        }
+    
+        25% {
+        transform: rotate(45deg);
+        }
+
+        50% {
+        transform: rotate(90deg);
+        }
+
+        75% {
+        transform: rotate(180deg);
+        }
+
+        100% {
+        transform: rotate(360deg);
+        }
+    }
 `;
