@@ -15,6 +15,7 @@ export const ContentArea = styled.div`
     border-radius: 5px 5px 0px 0px;
     box-sizing: border-box;
     color: #4B5C6B;
+    overflow: hidden;
 `;
 
 export const PosterArea = styled.div`
@@ -22,12 +23,11 @@ export const PosterArea = styled.div`
     height: 200px;
     text-align: center;
     border-bottom: 2px solid #C7D2DB;
-    position: relative;
+    position: relative;    
 
     img {
-        width: 170px;
+        width: 100%;
         height: 200px;
-        border-radius: 5px 5px 0px 0px;
     }
 
     span {
