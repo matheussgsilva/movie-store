@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import * as C from './styles'
 import MovieCard from '../MovieCard'
+import Skeleton from '../Skeleton'
 import tmdb from '../../lib/tmdb'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
@@ -36,6 +37,16 @@ const MovieList = ({ moviesId, sessionTitle }) => {
         setMoveList(moveList + 200)
     }
 
+    const renderSkeleton = () => {
+        const SkeletonList = []
+
+        for(let i = 1; i < 8; i++) {
+            SkeletonList.push(<Skeleton/>)
+        }
+
+        return SkeletonList
+    }
+
     return (
         <C.Container>
             <C.Title>{sessionTitle}</C.Title>
@@ -44,6 +55,9 @@ const MovieList = ({ moviesId, sessionTitle }) => {
                     <FaChevronLeft />
                 </C.MoveArrowLeft>
                 <C.MovieList position={moveList}>
+                    {movies.length === 0 &&
+                        renderSkeleton()
+                    }
                     {movies.map(( movie ) => (
                         <MovieCard 
                             key={movie.id} 
