@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import * as C from './styles'
 import MovieCard from '../MovieCard'
 import Skeleton from '../Skeleton'
-import tmdb from '../../lib/tmdb'
+import {tmdb} from '../../lib/tmdb'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 const MovieList = ({ moviesId, sessionTitle }) => {
