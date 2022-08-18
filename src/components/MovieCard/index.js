@@ -4,6 +4,7 @@ import * as C from './styles'
 import { FaHeart, FaStar, FaInfoCircle } from 'react-icons/fa'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
+import { numbers } from '../../lib/numbers'
 
 const MovieCard = ({ movie }) => {
     const [isFavorite, setIsFavorite] = useState(false)
@@ -122,7 +123,7 @@ const MovieCard = ({ movie }) => {
                         <span><FaStar /></span>
                         <span>{movieGenre()}</span>
                     </div>
-                    <p>R$ {movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2)}</p>
+                    <p>R$ {numbers.price(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))}</p>
                 </C.InfoArea>
             </C.ContentArea>
             <C.Button cart={isAddCart} onClick={handleAddCart}>
