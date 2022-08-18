@@ -98,8 +98,8 @@ export const CardInfo = styled.div`
 `;
 
 export const CardImage = styled.div`
-    width: 38%;
-    height: 150px;
+    width: 300px;
+    height: 160px;
     position: relative;
     transform-style: preserve-3d;
     transform: ${props => props.isRotate ? 'rotateY(180deg)' : 'rotateY(0deg)'};
