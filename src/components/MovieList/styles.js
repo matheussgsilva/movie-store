@@ -41,7 +41,6 @@ export const MoveArrowLeft = styled.div`
     cursor: pointer;
     transition: 300ms ease-in-out;
     position: absolute;
-    z-index: 1;
     opacity: 0.75;
 
     &:hover {
