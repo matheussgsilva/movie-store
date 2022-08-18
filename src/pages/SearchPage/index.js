@@ -16,7 +16,10 @@ const SearchPage = () => {
 
     return (
         <C.Container>
-        <C.Title>Resultado da Pesquisa</C.Title>
+        {searchMovie.length === 0 ?
+        <C.Title>O filme pesquisado não foi encontrado</C.Title>
+        : <C.Title>Resultado da Pesquisa</C.Title>
+        }
         <C.List>
             {searchMovie.map(( movie ) => (
                 <MovieCard 

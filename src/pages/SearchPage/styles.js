@@ -14,7 +14,7 @@ export const Title = styled.h2`
 
 export const List = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     column-gap: 20px;
     padding: 0px 20px;
