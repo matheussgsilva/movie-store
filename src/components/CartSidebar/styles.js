@@ -6,7 +6,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 450px;
-    height: 85vh;
+    height: 88vh;
     background-color: #FFF;
     box-shadow: -5px 1px 6px -1px rgba(0,0,0,0.55);
     position: relative;
@@ -50,7 +50,9 @@ export const Cart = styled.span`
     padding: 10px;
 `;
 
-export const ShoppingButton = styled.button`
+export const ShoppingButton = styled.span`
+    display: block;
+    text-align: center;
     border: 2px solid #8DD7CF;
     background-color: transparent;
     color: #8DD7CF;

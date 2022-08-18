@@ -19,11 +19,15 @@ const CartSidebar = ({ onHidden }) => {
             </C.CartItemsArea>
             <C.ButtonArea>
             <Link to={'/carrinho'}>
-                <C.Cart>Ir para o carrinho</C.Cart>
+                <C.Cart onClick={onHidden}>
+                    Ir para o carrinho
+                </C.Cart>
             </Link>
-            <C.ShoppingButton onClick={onHidden}>
-                Continuar comprando
-            </C.ShoppingButton>
+            <Link to={'/'}>
+                <C.ShoppingButton onClick={onHidden}>
+                    Continuar comprando
+                </C.ShoppingButton>
+            </Link>
             </C.ButtonArea>
         </C.Container>
     )
