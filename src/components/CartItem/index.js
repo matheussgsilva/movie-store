@@ -2,15 +2,17 @@ import * as C from './styles'
 import { useState, useEffect } from 'react'
 import { FaStar, FaTrash } from 'react-icons/fa'
 import { useCart } from '../../provider/CartProvider'
+import { numbers } from '../../lib/numbers'
 
 const CartItem = ({ movie }) => {
     const { cart, setCart } = useCart()
-    const [moviePrice, setMoviePrice] = useState(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))
+    const [moviePrice, setMoviePrice] = useState()
     const [cartType, setCartType] = useState(movie.cart)
 
     useEffect(() => {
         if(cartType === 'buy') {
-            setMoviePrice((moviePrice*1.5).toFixed(2))
+            const price = numbers.price(movie.vote_average*1.5)
+            setMoviePrice(price)
 
             const index = cart.findIndex( (item) => item.id === movie.id)
 
@@ -23,7 +25,8 @@ const CartItem = ({ movie }) => {
 
             setCart(newCart)
         } else {
-            setMoviePrice(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))
+            const price = numbers.price(movie.vote_average)
+            setMoviePrice(price)
 
             const index = cart.findIndex( (item) => item.id === movie.id)
             
