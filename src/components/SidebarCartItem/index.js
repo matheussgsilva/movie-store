@@ -1,6 +1,7 @@
 import * as C from './styles'
 import { FaTrash } from 'react-icons/fa'
 import { useCart } from '../../provider/CartProvider'
+import { numbers } from '../../lib/numbers'
 
 const SidebarCartItem = ({ movie }) => {
     const { cart, setCart } = useCart()
@@ -20,7 +21,7 @@ const SidebarCartItem = ({ movie }) => {
                 </C.MovieTitle>
                 <C.PriceInfoArea>
                     <C.MoviePrice>
-                        RS {movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2)}
+                        RS {numbers.price(movie.vote_average)}
                     </C.MoviePrice>
                     {/*<C.RemoveMovie onClick={handleRemoveCart} >
                         <FaTrash />
