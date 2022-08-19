@@ -1,6 +1,7 @@
 import * as C from './styles'
 import { useState, useEffect } from 'react'
 import { FaCcVisa, FaFileDownload } from 'react-icons/fa'
+import { numbers } from '../../lib/numbers'
 
 const CartPayment = ({ moviePrice }) => {
     const [payment, setPayment] = useState('')
@@ -51,7 +52,7 @@ const CartPayment = ({ moviePrice }) => {
 
         for(let i = 1; i < 7; i++) {
             paymentList.push(<C.Option value={(moviePrice/i).toFixed(2)}>
-                {i} x R$ {(moviePrice/i).toFixed(2)}
+                {i} x R$ {(moviePrice/i).toFixed(2).replace('.', ',')}
             </C.Option>)
         }
 
@@ -114,7 +115,7 @@ const CartPayment = ({ moviePrice }) => {
                                 placeholder='0000 0000 0000 0000'
                                 maxLength='16'
                                 onChange={e => setCardNumber(e.target.value)}
-                                value={cardNumber}
+                                value={numbers.card(cardNumber)}
                             />
                             <C.Label>
                                 Nome impresso:
