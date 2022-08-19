@@ -123,7 +123,7 @@ const MovieCard = ({ movie }) => {
                         <span><FaStar /></span>
                         <span>{movieGenre()}</span>
                     </div>
-                    <p>R$ {numbers.price(movie.vote_average === 0 ? "9,90" : (movie.vote_average*2.25).toFixed(2))}</p>
+                    <p>R$ {numbers.price(movie.vote_average)}</p>
                 </C.InfoArea>
             </C.ContentArea>
             <C.Button cart={isAddCart} onClick={handleAddCart}>
