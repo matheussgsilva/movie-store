@@ -6,7 +6,7 @@ import { FaLock } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import CartPayment from '../../components/CartPayment'
 import { useScrollBy } from 'react-use-window-scroll'
-import { numbers } from '../../lib/numbers'
+import { priceMovie } from '../../lib/priceMovie'
 
 
 const Cart = () => {
@@ -17,7 +17,7 @@ const Cart = () => {
     const totalPrice = cart.reduce(getTotal, 0)
     function getTotal(total, movie) {
 
-    return total + Number(movie.cart === 'rent' ? numbers.price(movie.vote_average).replace(',', '.') : numbers.price(movie.vote_average*1.5).replace(',', '.'))
+    return total + Number(movie.cart === 'rent' ? priceMovie(movie.vote_average).replace(',', '.') : priceMovie(movie.vote_average*1.5).replace(',', '.'))
     }
 
     const handleShowPayment = () => {
@@ -58,8 +58,8 @@ const Cart = () => {
                             {cart.map(( movie ) => (
                                 <p key={movie.id}>
                                     RS {movie.cart === 'rent' 
-                                        ? numbers.price(movie.vote_average) 
-                                        : numbers.price(movie.vote_average*1.5)
+                                        ? priceMovie(movie.vote_average) 
+                                        : priceMovie(movie.vote_average*1.5)
                                     }
                                 </p>
                             ))}

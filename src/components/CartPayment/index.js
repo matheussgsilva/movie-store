@@ -1,7 +1,7 @@
 import * as C from './styles'
 import { useState, useEffect } from 'react'
 import { FaCcVisa, FaFileDownload } from 'react-icons/fa'
-import { numbers } from '../../lib/numbers'
+import { priceMovie } from '../../lib/priceMovie'
 
 const CartPayment = ({ moviePrice }) => {
     const [payment, setPayment] = useState('')
@@ -115,7 +115,7 @@ const CartPayment = ({ moviePrice }) => {
                                 placeholder='0000 0000 0000 0000'
                                 maxLength='16'
                                 onChange={e => setCardNumber(e.target.value)}
-                                value={numbers.card(cardNumber)}
+                                value={cardNumber}
                             />
                             <C.Label>
                                 Nome impresso:

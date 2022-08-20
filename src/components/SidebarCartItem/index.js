@@ -1,7 +1,7 @@
 import * as C from './styles'
 import { FaTrash } from 'react-icons/fa'
 import { useCart } from '../../provider/CartProvider'
-import { numbers } from '../../lib/numbers'
+import { priceMovie } from '../../lib/priceMovie'
 
 const SidebarCartItem = ({ movie }) => {
     const { cart, setCart } = useCart()
@@ -21,7 +21,7 @@ const SidebarCartItem = ({ movie }) => {
                 </C.MovieTitle>
                 <C.PriceInfoArea>
                     <C.MoviePrice>
-                        RS {numbers.price(movie.vote_average)}
+                        RS {priceMovie(movie.vote_average)}
                     </C.MoviePrice>
                     {/*<C.RemoveMovie onClick={handleRemoveCart} >
                         <FaTrash />
