@@ -11,15 +11,15 @@ export const Container = styled.div`
 export const Detail = styled.div`
     display: flex;
     justify-content: space-between;
+`;
 
-    img {
-        width: 60vw;
-        height: 78vh;
-        margin-right: 1px;
-        margin-left: -15px;
-        border-radius: 10px;
-        box-shadow: -10px 12px 30px -3px rgba(0,0,0,0.5);
-    }
+export const MoviePoster = styled.img`
+    width: 60vw;
+    height: 78vh;
+    margin-right: 1px;
+    margin-left: -15px;
+    border-radius: 10px;
+    box-shadow: -10px 12px 30px -3px rgba(0,0,0,0.5);
 `;
 
 export const InfoArea = styled.div`
@@ -40,14 +40,14 @@ export const MovieInfo = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+`;
 
-    span {
-        margin-right: 5px;
-    }
+export const MovieInfoText = styled.p`
+    margin-right: 5px;
+`;
 
-    i {
-        margin-right: 10px;
-    }
+export const MovieInfoIcon = styled.i`
+    margin-right: 10px;
 `;
 
 export const MovieLink = styled.a`

@@ -23,27 +23,32 @@ export const InputArea = styled.div`
     height: 40px;
     box-sizing: border-box;
     margin-left: -30px;
+`;
 
-    input {
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-radius: 5px;
-        padding: 0px 10px;    
-        font-size: 1rem;
-        outline: none;
-    }
+export const SearchInput = styled.input`
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 10px;    
+    font-size: 1rem;
+    outline: none;
+`;
 
-    span {
-        width: 20px;
-        height: 20px;
-        color: #8DD7CF;
-        background-color: #FFF;
-        position: relative;
-        margin-left: -40px;
-        z-index: 1;
-        padding: 0px 6px;
-        cursor: pointer;
+export const SearchIcon = styled.i`
+    width: 20px;
+    height: 20px;
+    color: #8DD7CF;
+    background-color: #FFF;
+    position: relative;
+    margin-left: -40px;
+    z-index: 1;
+    padding: 0px 6px;
+    cursor: pointer;
+    transition: font-size 300ms ease-in-out;
+
+    &:hover {
+        font-size: 1.2rem;
     }
 `;
 

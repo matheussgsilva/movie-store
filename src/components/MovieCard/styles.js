@@ -23,24 +23,24 @@ export const PosterArea = styled.div`
     height: 200px;
     text-align: center;
     border-bottom: 2px solid #C7D2DB;
-    position: relative;    
+    position: relative;
+`;
 
-    img {
-        width: 100%;
-        height: 200px;
-    }
+export const Poster = styled.img`
+    width: 100%;
+    height: 200px;
+`;
 
-    span {
-        width: 100px;
-        position: absolute;
-        text-align: center;
-        margin-top: -150px;
-        background-color: #C7D2DB;
-        bottom: 0;
-        left: calc(50% - 50px);
-        border-radius: 5px 5px 0px 0px;
-        font-size: 0.8rem;
-    }
+export const MovieRelease = styled.span`
+    width: 100px;
+    position: absolute;
+    text-align: center;
+    margin-top: -150px;
+    background-color: #C7D2DB;
+    bottom: 0;
+    left: calc(50% - 50px);
+    border-radius: 5px 5px 0px 0px;
+    font-size: 0.8rem;
 `;
 
 export const InfoIcon = styled.i`
@@ -72,22 +72,31 @@ export const InfoArea = styled.div`
     justify-content: space-between;
     text-align: center;
     height: 110px;
+`;
 
-    h3 {
-        font-size: 1rem;
-        margin: 5px;
-    }
+export const MovieTitle = styled.h3`
+    font-size: 1rem;
+    margin: 5px;
+`;
 
-    span {
-        font-size: 0.9rem;
-        margin-right: 5px;
-    }
+export const VoteAverageArea = styled.div`
 
-    p {
-        font-size: 1rem;
-        font-weight: bold;
-        margin-top: 3px;
-    }
+`;
+
+export const VoteAverageInfo = styled.span`
+    font-size: 0.9rem;
+    margin-right: 5px;
+`;
+
+export const VoteAverageIcon = styled.i`
+    font-size: 0.9rem;
+    margin-right: 5px;
+`;
+
+export const MoviePrice = styled.p`
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 3px;
 `;
 
 export const Button = styled.button`

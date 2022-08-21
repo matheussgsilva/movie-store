@@ -45,8 +45,6 @@ const MovieDetail = () => {
         })
     }, [])
 
-    console.log(cart)
-
     const handleFavorite = () => {
         if (isFavorite) {
             let newFavorite = favoriteMovies.filter(item => (item.id !== Number(id)))
@@ -81,13 +79,13 @@ const MovieDetail = () => {
                 <C.InfoArea>
                     <C.MovieTitle>{movieDetail.title}</C.MovieTitle>
                     <C.MovieInfo>
-                        <span>
+                        <C.MovieInfoText>
                             {Number(movieDetail.vote_average).toFixed(1)}
-                        </span>
-                        <i>
+                        </C.MovieInfoText>
+                        <C.MovieInfoIcon>
                             <FaStar />
-                        </i>
-                        <span>{release.slice(0,4)}</span>
+                        </C.MovieInfoIcon>
+                        <C.MovieInfoText>{release.slice(0,4)}</C.MovieInfoText>
                     </C.MovieInfo>
                     {movieDetail.homepage &&
                         <C.MovieLink href={`${movieDetail.homepage}`} target="_blank" rel='noreferrer'>
@@ -104,7 +102,7 @@ const MovieDetail = () => {
                             <C.CartIcon isAddCart={isAddCart}><FaShoppingCart /></C.CartIcon>
                     </C.Button>
                 </C.InfoArea>
-                    <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />
+                    <C.MoviePoster src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />
             </C.Detail>
             <C.SimilarMovies>
                 <C.Title>Fimes similares</C.Title>

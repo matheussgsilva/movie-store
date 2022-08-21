@@ -30,15 +30,15 @@ const Cart = () => {
             <C.Container>
                 <C.CartList>
                     <C.CartListHeader>
-                        <C.CartListHeaderInfo>
-                            <p>Sacola de compras - Movie Store</p>
-                            <span> {cart.length === 1 ? `1 filme` : `${cart.length} filmes`}</span>
-                        </C.CartListHeaderInfo>
+                        <C.CartListHeaderInfoArea>
+                            <C.CartListHeaderInfo>Sacola de compras - Movie Store</C.CartListHeaderInfo>
+                            <C.CartListHeaderInfo> {cart.length === 1 ? `1 filme` : `${cart.length} filmes`}</C.CartListHeaderInfo>
+                        </C.CartListHeaderInfoArea>
                         <C.CartListSecurity>
-                            <i>
+                            <C.LockIcon>
                                 <FaLock />
-                            </i>
-                            <p>100% <br/><span>SEGURO</span></p>
+                            </C.LockIcon>
+                            <C.SecurityText>100% <br/><span>SEGURO</span></C.SecurityText>
                         </C.CartListSecurity>
                     </C.CartListHeader>
                         {cart.map(( movie ) => (
@@ -50,29 +50,32 @@ const Cart = () => {
                 </C.CartList>
                 <C.Resume>
                     <C.ResumeHeader>
-                        <span>RESUMO</span>
+                        <C.ResumeHeaderText>RESUMO</C.ResumeHeaderText>
                     </C.ResumeHeader>
                     <C.ResumeSubtotal>
-                        <span>Subtotal ({cart.length === 1 ? `1 filme` : `${cart.length} filmes`})</span>
+                        <C.SubtotalText>Subtotal ({cart.length === 1 ? `1 filme` : `${cart.length} filmes`})</C.SubtotalText>
                         <C.PriceResume>
                             {cart.map(( movie ) => (
-                                <p key={movie.id}>
+                                <C.SubtotalText key={movie.id}>
                                     RS {movie.cart === 'rent' 
                                         ? priceMovie(movie.vote_average) 
                                         : priceMovie(movie.vote_average*1.5)
                                     }
-                                </p>
+                                </C.SubtotalText>
                             ))}
                         </C.PriceResume>
                     </C.ResumeSubtotal>
                     <C.ResumeTotal>
-                        <span>Total</span>
+                        <C.TotalStrong>Total</C.TotalStrong>
                         <C.TotalValue>
-                            <p><strong>R$ {totalPrice.toFixed(2).replace('.', ',')}</strong></p>
-                            <p>em até 6x de <span>R$ {(totalPrice.toFixed(2)/6).toFixed(2).replace('.', ',')}</span></p>
+                            <C.TotalStrong>R$ {totalPrice.toFixed(2).replace('.', ',')}</C.TotalStrong>
+                            <C.TotalValueText>em até 6x de <strong>R$ {(totalPrice.toFixed(2)/6).toFixed(2).replace('.', ',')}</strong></C.TotalValueText>
                         </C.TotalValue>
                     </C.ResumeTotal>
-                    <C.FinishButton onClick={handleShowPayment}>
+                    <C.FinishButton 
+                        onClick={handleShowPayment}
+                        disabled={cart.length === 0}
+                    >
                         finalizar compra
                     </C.FinishButton>
                     <Link to='/'>

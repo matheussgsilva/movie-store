@@ -14,6 +14,7 @@ export const PosterArea = styled.img`
     width: 130px;
     height: 180px;
     margin-right: 20px;
+    border-radius: 5px;
 `;
 
 export const InfoArea = styled.div`
@@ -39,12 +40,6 @@ export const RateArea = styled.div`
     display: flex;
     align-items: center;
     margin: 5px 0px;
-    font-size: 0.9rem;
-    color: #333333;
-
-    i {
-        margin-left: 5px;
-    }
 `;
 
 export const ReleaseDate = styled.p`
@@ -74,33 +69,50 @@ export const SelectArea = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 25px;
+    margin-right: 0;
+`;
+
+export const Label = styled.label`
     font-size: 0.9rem;
     color: #333333;
-    margin-right: 0;
+    margin-bottom: 10px;
+`;
 
-    label {
-        margin-bottom: 10px;
-    }
+export const Select = styled.select`
+    outline: none;
+    color: #333333;
+    padding: 5px;
+    border-radius: 5px;
+`;
 
-    select {
-        outline: none;
-        color: #333333;
-        padding: 5px;
-        border-radius: 5px;
-    }
+export const Option = styled.option`
+    font-size: 0.9rem;
+    color: #333333;
 `;
 
 export const MovieValue = styled.p`
     font-size: 0.9rem;
     margin-top: 15px;
+    color: #333333;
 
     strong {
         font-size: 1rem;
-        font-weight: bold;
     }
 `;
 
 export const EmphText = styled.span`
     font-size: 0.9rem;
     font-weight: bold;
+    color: #333333;
+`;
+
+export const VoteAverage = styled.span`
+    font-size: 0.9rem;
+    color: #333333;
+`;
+
+export const Icon = styled.i`
+    font-size: 0.9rem;
+    color: #333333;
+    margin-left: 5px;
 `;

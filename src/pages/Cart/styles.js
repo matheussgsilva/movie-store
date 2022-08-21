@@ -21,43 +21,38 @@ export const CartListHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     background-color: #DDD;
-    padding: 10px;
+    padding: 12px;
     box-sizing: border-box;
 `;
 
-export const CartListHeaderInfo = styled.div`
+export const CartListHeaderInfoArea = styled.div`
+
+`;
+
+export const CartListHeaderInfo = styled.p`
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
     text-transform: uppercase;
-
-    p {
-        font-size: 0.8rem;
-        font-weight: bold;
-        color: #333333;
-        margin: 0;
-        
-    }
-
-    span {
-        font-size: 0.8rem;
-        color: #333333;
-    }
 `;
 
 export const CartListSecurity = styled.div`
     display: flex;
     align-items: center;
-    color: #999999;
+    color: #999999;    
+`;
 
-    i {
-        font-size: 1.5rem;        
-        margin-right: 5px;
-    }
+export const LockIcon = styled.i`
+    font-size: 1.5rem;        
+    margin-right: 5px;
+`;
 
-    p {
-        font-size: 0.9rem;
-        margin: 0;
-        line-height: 12px;
-        text-align: center;
-    }
+export const SecurityText = styled.p`
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 12px;
+    text-align: center;
 
     span {
         font-size: 0.7rem;
@@ -76,16 +71,14 @@ export const ResumeHeader = styled.div`
     align-items: center;
     background-color: #DDD;
     padding: 20px 10px;
-    box-sizing: border-box;    
+    box-sizing: border-box;
+`;
 
-    span {
-        font-size: 0.9rem;
-        font-weight: bold;
-        color: #333333;
-        margin: 0;
-        text-transform: uppercase;
-    }
-
+export const ResumeHeaderText = styled.p`
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
 `;
 
 export const ResumeSubtotal = styled.div`
@@ -93,9 +86,12 @@ export const ResumeSubtotal = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 30px 20px;
+    border-bottom: 1px solid #999999;
+`;
+
+export const SubtotalText = styled.p`
     font-size: 0.9rem;
     color: #333333;
-    border-bottom: 1px solid #999999;
 `;
 
 export const PriceResume = styled.div`
@@ -109,11 +105,13 @@ export const ResumeTotal = styled.div`
     align-items: center;    
     background-color: #DDD;
     padding: 20px;
-    color: #333333;
+`;
 
-    span {
-        font-weight: bold;
-    }
+export const TotalStrong = styled.p`
+    color: #333333;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
 `;
 
 export const TotalValue = styled.div`
@@ -121,15 +119,12 @@ export const TotalValue = styled.div`
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
+`;
 
-    p {
-        font-size: 0.8rem;
-        margin: 0;
-    }
-
-    strong {
-        font-size: 1rem;
-    }
+export const TotalValueText = styled.p`
+    color: #333333;
+    font-size: 0.8rem;
+    margin: 0;
 `;
 
 export const FinishButton = styled.button`

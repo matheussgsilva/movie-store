@@ -5,6 +5,7 @@ import { FaHeart, FaStar, FaInfoCircle } from 'react-icons/fa'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
 import { priceMovie } from '../../lib/priceMovie'
+import { movieGenre } from '../../lib/movieGenre'
 
 const MovieCard = ({ movie }) => {
     const [isFavorite, setIsFavorite] = useState(false)
@@ -56,57 +57,12 @@ const MovieCard = ({ movie }) => {
         }
     }
 
-    const movieGenre = () => {
-        switch (movie.genre_ids[0]) {
-        case 28:
-            return "Ação";
-        case 12:
-            return "Aventura";
-        case 16:
-            return "Animação";
-        case 35:
-            return "Comédia";
-        case 80:
-            return "Crime";
-        case 99:
-            return "Drama";
-        case 18:
-            return "Ação";
-        case 10751:
-            return "Família";
-        case 14:
-            return "Fantasia";
-        case 36:
-            return "História";
-        case 27:
-            return "Terror";
-        case 10402:
-            return "Música";
-        case 9648:
-            return "Mistério";
-        case 10749:
-            return "Romance";
-        case 878:
-            return "Ficção científica";
-        case 10770:
-            return "Cinema TV";
-        case 53:
-            return "Thriller";
-        case 10752:
-            return "Guerra";
-        case 37:
-            return "Faroeste";
-        default:
-            return ""
-        }
-    }
-
     return (
         <C.Container>
             <C.ContentArea>
                 <C.PosterArea>                    
-                    <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />                    
-                    <span>{String(movie.release_date).slice(0,4)}</span>
+                    <C.Poster src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />                    
+                    <C.MovieRelease>{String(movie.release_date).slice(0,4)}</C.MovieRelease>
                     <C.FavoriteIcon favorite={isFavorite} onClick={handleFavoriteMovie}>
                         <FaHeart />
                     </C.FavoriteIcon>
@@ -117,13 +73,13 @@ const MovieCard = ({ movie }) => {
                     </Link>
                 </C.PosterArea>
                 <C.InfoArea>
-                    <h3>{movie.title.length > 30 ? `${movie.title.slice(0,30)}...` : movie.title}</h3>
-                    <div>
-                        <span>{movie.vote_average}</span>
-                        <span><FaStar /></span>
-                        <span>{movieGenre()}</span>
-                    </div>
-                    <p>R$ {priceMovie(movie.vote_average)}</p>
+                    <C.MovieTitle>{movie.title.length > 30 ? `${movie.title.slice(0,30)}...` : movie.title}</C.MovieTitle>
+                    <C.VoteAverageArea>
+                        <C.VoteAverageInfo>{movie.vote_average}</C.VoteAverageInfo>
+                        <C.VoteAverageIcon><FaStar /></C.VoteAverageIcon>
+                        <C.VoteAverageInfo>{movieGenre(movie.genre_ids[0])}</C.VoteAverageInfo>
+                    </C.VoteAverageArea>
+                    <C.MoviePrice>R$ {priceMovie(movie.vote_average)}</C.MoviePrice>
                 </C.InfoArea>
             </C.ContentArea>
             <C.Button cart={isAddCart} onClick={handleAddCart}>

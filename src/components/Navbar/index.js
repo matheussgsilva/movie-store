@@ -28,15 +28,15 @@ const Navbar = ({ showCartSidebar }) => {
                 </C.HomeIcon>
             </Link>
             <C.InputArea>
-                <input 
+                <C.SearchInput 
                     placeholder='Pesquisar'
                     value={searchField} 
                     onChange={e => setSearchField(e.target.value)}
                 />
                 <Link to={`/search/${searchField}`}>
-                    <span>
+                    <C.SearchIcon>
                         <FaSearch />
-                    </span>
+                    </C.SearchIcon>
                 </Link>
                 
             </C.InputArea>

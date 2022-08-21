@@ -57,8 +57,8 @@ const CartItem = ({ movie }) => {
                 </C.OriginalMovieTitle>
                 <C.RateArea>
                     <C.EmphText>Avaliação: </C.EmphText>
-                    <span>{movie.vote_average}</span>
-                    <i><FaStar /></i>
+                    <C.VoteAverage>{movie.vote_average}</C.VoteAverage>
+                    <C.Icon><FaStar /></C.Icon>
                 </C.RateArea>
                 <C.ReleaseDate>
                     <C.EmphText>Ano de lançamento: </C.EmphText>
@@ -69,16 +69,16 @@ const CartItem = ({ movie }) => {
                 </C.Remove>
             </C.InfoArea>
             <C.SelectArea>
-                <label>Selecione uma opção:</label>
+                <C.Label>Selecione uma opção:</C.Label>
                 {cartType === 'rent' ?
-                <select onChange={(e) => setCartType(e.target.value)}>
-                    <option value="rent" selected>Alugar</option>
-                    <option value="buy">Compar</option>
-                </select>
-                :   <select onChange={(e) => setCartType(e.target.value)}>
-                        <option value="rent">Alugar</option>
-                        <option value="buy" selected>Compar</option>
-                    </select>
+                <C.Select onChange={(e) => setCartType(e.target.value)}>
+                    <C.Option value="rent" selected>Alugar</C.Option>
+                    <C.Option value="buy">Compar</C.Option>
+                </C.Select>
+                :   <C.Select onChange={(e) => setCartType(e.target.value)}>
+                        <C.Option value="rent">Alugar</C.Option>
+                        <C.Option value="buy" selected>Compar</C.Option>
+                    </C.Select>
                 }
                 <C.MovieValue>Valor: <br/><strong>R$ {moviePrice}</strong></C.MovieValue>
             </C.SelectArea>
