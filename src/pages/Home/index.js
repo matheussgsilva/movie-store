@@ -8,7 +8,7 @@ const Home = () => {
             <MovieList moviesId={99} sessionTitle={'Documentário'} />
             <MovieList moviesId={35} sessionTitle={'Comédia'} />
             <MovieList moviesId={27} sessionTitle={'Terror'} />
-            <MovieList moviesId={10749} sessionTitle={'Romance'} />
+            <MovieList moviesId={10752} sessionTitle={'Guerra'} />
             <MovieList moviesId={16} sessionTitle={'Infantil'} />
         </C.Container>        
     )
