@@ -24,7 +24,6 @@ export const MovieList = styled.div`
     position: relative;
     transform: ${props => props.position ? `translateX(${props.position}px)` : `translateX(0)`};
     transition: transform 300ms ease-in-out;
-    z-index: -1;
 `;
 
 export const MoveArrowLeft = styled.div`
@@ -43,6 +42,7 @@ export const MoveArrowLeft = styled.div`
     transition: 300ms ease-in-out;
     position: absolute;
     opacity: 0.75;
+    z-index: 1;
 
     &:hover {
         transform: scale(1.02);

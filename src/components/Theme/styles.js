@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const Sidebar = styled.aside`
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     right: -450px;
     top: 12vh;
     transform: ${props => props.showSidebar ? 'translateX(-450px)' : 'translateX(10px)'};
