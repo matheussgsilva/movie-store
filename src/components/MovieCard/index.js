@@ -13,6 +13,8 @@ const MovieCard = ({ movie }) => {
     const { favoriteMovies, setFavoriteMovies } = useApp()
     const { cart, setCart } = useCart([])
 
+    console.log(favoriteMovies)
+
     useEffect(() => {
         favoriteMovies.map((favoriteMovie) => {
             if (favoriteMovie.id === movie.id) {
@@ -77,7 +79,9 @@ const MovieCard = ({ movie }) => {
                     <C.VoteAverageArea>
                         <C.VoteAverageInfo>{movie.vote_average}</C.VoteAverageInfo>
                         <C.VoteAverageIcon><FaStar /></C.VoteAverageIcon>
-                        <C.VoteAverageInfo>{movieGenre(movie.genre_ids[0])}</C.VoteAverageInfo>
+                        <C.VoteAverageInfo>
+                            {movieGenre(movie.genre_ids ? movie.genre_ids[0] : movie.genres[0].id)}
+                        </C.VoteAverageInfo>
                     </C.VoteAverageArea>
                     <C.MoviePrice>R$ {priceMovie(movie.vote_average)}</C.MoviePrice>
                 </C.InfoArea>
