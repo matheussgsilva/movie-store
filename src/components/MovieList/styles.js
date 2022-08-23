@@ -24,6 +24,7 @@ export const MovieList = styled.div`
     position: relative;
     transform: ${props => props.position ? `translateX(${props.position}px)` : `translateX(0)`};
     transition: transform 300ms ease-in-out;
+    z-index: -1;
 `;
 
 export const MoveArrowLeft = styled.div`
