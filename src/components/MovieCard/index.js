@@ -62,8 +62,10 @@ const MovieCard = ({ movie }) => {
     return (
         <C.Container>
             <C.ContentArea>
-                <C.PosterArea>                    
-                    <C.Poster src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />                    
+                <C.PosterArea>
+                    <Link to={`/detail/${movie.id}`}>                  
+                        <C.Poster src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+                    </Link>                 
                     <C.MovieRelease>{String(movie.release_date).slice(0,4)}</C.MovieRelease>
                     <C.FavoriteIcon favorite={isFavorite} onClick={handleFavoriteMovie}>
                         <FaHeart />
@@ -77,8 +79,7 @@ const MovieCard = ({ movie }) => {
                 <C.InfoArea>
                     <C.MovieTitle>{movie.title.length > 30 ? `${movie.title.slice(0,30)}...` : movie.title}</C.MovieTitle>
                     <C.VoteAverageArea>
-                        <C.VoteAverageInfo>{movie.vote_average}</C.VoteAverageInfo>
-                        <C.VoteAverageIcon><FaStar /></C.VoteAverageIcon>
+                        <C.VoteAverageInfo>{movie.vote_average} <FaStar /></C.VoteAverageInfo>
                         <C.VoteAverageInfo>
                             {movieGenre(movie.genre_ids ? movie.genre_ids[0] : movie.genres[0].id)}
                         </C.VoteAverageInfo>

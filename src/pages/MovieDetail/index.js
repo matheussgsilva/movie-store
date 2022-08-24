@@ -105,7 +105,7 @@ const MovieDetail = () => {
                     <C.MoviePoster src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />
             </C.Detail>
             <C.SimilarMovies>
-                <C.Title>Fimes similares</C.Title>
+                <C.Title>Filmes similares</C.Title>
                 <C.List>
                     {similarMovies.map(( movie ) => (
                         <MovieCard 

@@ -4,8 +4,9 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 180px;
+    width: 200px;
     height: 350px;
+    box-sizing: border-box;
 `;
 
 export const ContentArea = styled.div`
@@ -16,6 +17,12 @@ export const ContentArea = styled.div`
     box-sizing: border-box;
     color: #4B5C6B;
     overflow: hidden;
+
+    &:hover {
+        background-color: #DDD;
+        border: 2px solid #8DD7CF;
+        border-bottom: none;
+    }
 `;
 
 export const PosterArea = styled.div`
@@ -64,6 +71,10 @@ export const FavoriteIcon = styled.i`
     margin: 10px;
     color: ${props => props.favorite ? '#FA4C37' : '#FFF'};
     cursor: pointer;
+
+    &:hover {
+        color: ${props => props.favorite ? '#FA4C37' : '#FA90B5'};
+    }
 `;
 
 export const InfoArea = styled.div`
@@ -80,7 +91,8 @@ export const MovieTitle = styled.h3`
 `;
 
 export const VoteAverageArea = styled.div`
-
+    display: flex;
+    justify-content: space-around;
 `;
 
 export const VoteAverageInfo = styled.span`
