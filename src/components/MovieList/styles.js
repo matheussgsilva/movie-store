@@ -19,7 +19,7 @@ export const List = styled.div`
 export const MovieList = styled.div`
     display: flex;
     align-items: center;
-    column-gap: 20px;
+    column-gap: 10px;
     padding-left: 70px;
     position: relative;
     transform: ${props => props.position ? `translateX(${props.position}px)` : `translateX(0)`};

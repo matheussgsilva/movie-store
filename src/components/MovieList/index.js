@@ -27,14 +27,14 @@ const MovieList = ({ moviesId, sessionTitle }) => {
     }, [])
 
     const handleMoveRight = () => {
-        setMoveList(moveList - 200)
+        setMoveList(moveList - 210)
     }
 
     const handleMoveLeft = () => {
         if(moveList >= 0) {
             return
         }
-        setMoveList(moveList + 200)
+        setMoveList(moveList + 210)
     }
 
     const renderSkeleton = () => {
