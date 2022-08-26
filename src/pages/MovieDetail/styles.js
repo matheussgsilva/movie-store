@@ -13,11 +13,10 @@ export const Detail = styled.div`
     justify-content: space-between;
 `;
 
-export const MoviePoster = styled.img`
-    width: 60vw;
-    height: 78vh;
-    margin-right: 1px;
-    margin-left: -15px;
+export const MoviePoster = styled.div`
+    width: 50vw;
+    height: 100%;
+    margin: 70px;    
     border-radius: 10px;
     box-shadow: -10px 12px 30px -3px rgba(0,0,0,0.5);
 `;

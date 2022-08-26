@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as C from './styles'
 import { FaHeart, FaStar, FaShoppingCart } from 'react-icons/fa'
+import { DefaultUi, Player, Youtube, Video } from "@vime/react"
 import {tmdb} from '../../lib/tmdb'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
 import MovieCard from '../../components/MovieCard'
+import '@vime/core/themes/default.css'
 
 const MovieDetail = () => {
     const [movieDetail, setMovieDetail] = useState([])
     const [similarMovies, setSimilarMovies] = useState([])
+    const [movieVideo, setMovieVideo] = useState([])
     const [isFavorite, setIsFavorite] = useState(false)
     const [isAddCart, setIsAddCart] = useState(false)
     const { favoriteMovies, setFavoriteMovies } = useApp()
@@ -28,6 +31,14 @@ const MovieDetail = () => {
         .then(res => res.json())
         .then(data => setSimilarMovies(data.results))
     }, [])
+
+    useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${tmdb}&language=pt-BR`)
+        .then(res => res.json())
+        .then(data => setMovieVideo(data.results[0].key))
+    }, [])
+
+    console.log('video', movieVideo)
 
     useEffect(() => {
         favoriteMovies.map((favoriteMovie) => {
@@ -102,7 +113,16 @@ const MovieDetail = () => {
                             <C.CartIcon isAddCart={isAddCart}><FaShoppingCart /></C.CartIcon>
                     </C.Button>
                 </C.InfoArea>
-                    <C.MoviePoster src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />
+                <C.MoviePoster>
+                    <Player>
+                    <Video  poster={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`}>
+                        
+                        <Youtube videoId={movieVideo}/>
+                    </Video>
+                        <DefaultUi />
+                    </Player>
+                </C.MoviePoster>
+                    {/*<C.MoviePoster src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />*/}
             </C.Detail>
             <C.SimilarMovies>
                 <C.Title>Filmes similares</C.Title>
