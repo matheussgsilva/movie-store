@@ -13,8 +13,6 @@ const MovieCard = ({ movie }) => {
     const { favoriteMovies, setFavoriteMovies } = useApp()
     const { cart, setCart } = useCart([])
 
-    console.log(favoriteMovies)
-
     useEffect(() => {
         favoriteMovies.map((favoriteMovie) => {
             if (favoriteMovie.id === movie.id) {
