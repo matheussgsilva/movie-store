@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as C from './styles'
 import { FaShoppingCart } from 'react-icons/fa'
 import { FaHeart, FaHome, FaSearch } from 'react-icons/fa'
@@ -11,6 +11,13 @@ const Navbar = ({ showCartSidebar }) => {
     const [favorite, setFavorite] = useState(false)
     const { favoriteMovies } = useApp()
     const { cart } = useCart()
+    const navigate = useNavigate()
+
+    const handleKeyPress = (e) => {        
+        if(e.key === 'Enter') {
+            navigate(`/search/${searchField}`)
+        }
+    }
 
     useEffect(() => {
         if ( favoriteMovies.length === 0) {
@@ -32,6 +39,7 @@ const Navbar = ({ showCartSidebar }) => {
                     placeholder='Pesquisar'
                     value={searchField} 
                     onChange={e => setSearchField(e.target.value)}
+                    onKeyPress={handleKeyPress}
                 />
                 <Link to={`/search/${searchField}`}>
                     <C.SearchIcon>
