@@ -24,21 +24,19 @@ const MovieDetail = () => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb}&language=pt-BR`)
         .then(res => res.json())
         .then(data => setMovieDetail(data))
-    }, [])
+    }, [id])
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${tmdb}&language=pt-BR&page=1`)
         .then(res => res.json())
         .then(data => setSimilarMovies(data.results))
-    }, [])
+    }, [id])
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${tmdb}&language=pt-BR`)
         .then(res => res.json())
         .then(data => setMovieVideo(data.results[0].key))
-    }, [])
-
-    console.log('video', movieVideo)
+    }, [id])
 
     useEffect(() => {
         favoriteMovies.map((favoriteMovie) => {
@@ -122,7 +120,6 @@ const MovieDetail = () => {
                         <DefaultUi />
                     </Player>
                 </C.MoviePoster>
-                    {/*<C.MoviePoster src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} alt={movieDetail.title} />*/}
             </C.Detail>
             <C.SimilarMovies>
                 <C.Title>Filmes similares</C.Title>
