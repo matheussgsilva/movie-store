@@ -13,12 +13,18 @@ export const Detail = styled.div`
     justify-content: space-between;
 `;
 
-export const MoviePoster = styled.div`
-    width: 50vw;
-    height: 100%;
+export const MoviePosterArea = styled.div`
+    width: 630px;
+    height: 350px;
     margin: 70px;    
     border-radius: 10px;
     box-shadow: -10px 12px 30px -3px rgba(0,0,0,0.5);
+    overflow: hidden;
+`;
+
+export const MoviePoster = styled.img`
+    width: 100%;
+    height: 100%;
 `;
 
 export const InfoArea = styled.div`

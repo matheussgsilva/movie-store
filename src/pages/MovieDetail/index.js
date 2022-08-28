@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as C from './styles'
 import { FaHeart, FaStar, FaShoppingCart } from 'react-icons/fa'
-import { DefaultUi, Player, Youtube, Video } from "@vime/react"
+import ReactPlayer from 'react-player/lazy'
 import {tmdb} from '../../lib/tmdb'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
 import MovieCard from '../../components/MovieCard'
-import '@vime/core/themes/default.css'
 
 const MovieDetail = () => {
     const [movieDetail, setMovieDetail] = useState([])
@@ -15,10 +14,14 @@ const MovieDetail = () => {
     const [movieVideo, setMovieVideo] = useState([])
     const [isFavorite, setIsFavorite] = useState(false)
     const [isAddCart, setIsAddCart] = useState(false)
+    const [showMovietrailer, setShowMovieTrailer] = useState(false)
+    const [videoURL, setVideoURL] = useState('')
     const { favoriteMovies, setFavoriteMovies } = useApp()
     const { cart, setCart } = useCart([])
     const { id } = useParams()
     const release = String(movieDetail.release_date)
+
+    console.log('Movie Detail', movieVideo)
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb}&language=pt-BR`)
@@ -35,7 +38,7 @@ const MovieDetail = () => {
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${tmdb}&language=pt-BR`)
         .then(res => res.json())
-        .then(data => setMovieVideo(data.results[0].key))
+        .then(data => setMovieVideo(data.results[0]))        
     }, [id])
 
     useEffect(() => {
@@ -53,6 +56,12 @@ const MovieDetail = () => {
             }
         })
     }, [])
+
+    useEffect(() => {
+        setShowMovieTrailer(false)
+        let URLRefresh = (movieVideo !== undefined ? movieVideo.key : '')
+        setVideoURL(`https://www.youtube.com/watch?v=${URLRefresh}`)
+    }, [id])
 
     const handleFavorite = () => {
         if (isFavorite) {
@@ -81,6 +90,11 @@ const MovieDetail = () => {
             setIsAddCart(true)
         }
     }
+
+    setTimeout(() => {
+        movieVideo.key.length !== 0 && setShowMovieTrailer(true)
+        setVideoURL(`https://www.youtube.com/watch?v=${movieVideo.key}`)
+    }, 5000)
 
     return (
         <C.Container>
@@ -111,15 +125,18 @@ const MovieDetail = () => {
                             <C.CartIcon isAddCart={isAddCart}><FaShoppingCart /></C.CartIcon>
                     </C.Button>
                 </C.InfoArea>
-                <C.MoviePoster>
-                    <Player>
-                    <Video  poster={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`}>
-                        
-                        <Youtube videoId={movieVideo}/>
-                    </Video>
-                        <DefaultUi />
-                    </Player>
-                </C.MoviePoster>
+                {!showMovietrailer &&
+                <C.MoviePosterArea>
+                    <C.MoviePoster 
+                        src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} 
+                        alt={movieDetail.title} 
+                    />
+                </C.MoviePosterArea>}
+                {showMovietrailer &&
+                    <C.MoviePosterArea>
+                        <ReactPlayer playing={true} url={videoURL} />
+                    </C.MoviePosterArea>
+                }
             </C.Detail>
             <C.SimilarMovies>
                 <C.Title>Filmes similares</C.Title>
