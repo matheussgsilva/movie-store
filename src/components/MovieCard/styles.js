@@ -31,11 +31,17 @@ export const PosterArea = styled.div`
     text-align: center;
     border-bottom: 2px solid #C7D2DB;
     position: relative;
+    overflow: hidden;
 `;
 
 export const Poster = styled.img`
     width: 100%;
     height: 200px;
+    transition: transform 500ms ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `;
 
 export const MovieRelease = styled.span`
