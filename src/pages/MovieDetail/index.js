@@ -21,8 +21,6 @@ const MovieDetail = () => {
     const { id } = useParams()
     const release = String(movieDetail.release_date)
 
-    console.log('Movie Detail', movieVideo)
-
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb}&language=pt-BR`)
         .then(res => res.json())
@@ -59,7 +57,7 @@ const MovieDetail = () => {
 
     useEffect(() => {
         setShowMovieTrailer(false)
-        let URLRefresh = (movieVideo !== undefined ? movieVideo.key : '')
+        let URLRefresh = (movieVideo.key ? movieVideo.key : '')
         setVideoURL(`https://www.youtube.com/watch?v=${URLRefresh}`)
     }, [id])
 
@@ -91,16 +89,21 @@ const MovieDetail = () => {
         }
     }
 
-    setTimeout(() => {
-        movieVideo.key.length !== 0 && setShowMovieTrailer(true)
-        setVideoURL(`https://www.youtube.com/watch?v=${movieVideo.key}`)
-    }, 5000)
-
     return (
         <C.Container>
-            <C.Detail>
+            <C.Detail background={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`}>
+                <C.MoviePosterArea>
+                    <C.MoviePoster 
+                        src={`https://image.tmdb.org/t/p/w500/${movieDetail.poster_path}`} 
+                        alt={movieDetail.title} 
+                    />
+                    <C.Button onClick={handleAddCart}>
+                            {isFavorite ? 'Remover do carrinho' : 'Adicionar ao carrinho'} 
+                            <C.CartIcon isAddCart={isAddCart}><FaShoppingCart /></C.CartIcon>
+                    </C.Button>
+                </C.MoviePosterArea>
                 <C.InfoArea>
-                    <C.MovieTitle>{movieDetail.title}</C.MovieTitle>
+                    <C.MovieTitle>{movieDetail.title}</C.MovieTitle>                   
                     <C.MovieInfo>
                         <C.MovieInfoText>
                             {Number(movieDetail.vote_average).toFixed(1)}
@@ -120,21 +123,11 @@ const MovieDetail = () => {
                             {isFavorite ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'} 
                             <C.FavoriteIcon isFavorite={isFavorite}><FaHeart /></C.FavoriteIcon>
                     </C.Button>
-                    <C.Button onClick={handleAddCart}>
-                            {isFavorite ? 'Remover do carrinho' : 'Adicionar ao carrinho'} 
-                            <C.CartIcon isAddCart={isAddCart}><FaShoppingCart /></C.CartIcon>
-                    </C.Button>
+                    
                 </C.InfoArea>
-                {!showMovietrailer &&
-                <C.MoviePosterArea>
-                    <C.MoviePoster 
-                        src={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`} 
-                        alt={movieDetail.title} 
-                    />
-                </C.MoviePosterArea>}
                 {showMovietrailer &&
                     <C.MoviePosterArea>
-                        <ReactPlayer playing={true} url={videoURL} />
+                        <ReactPlayer playing={false} url={videoURL} />
                     </C.MoviePosterArea>
                 }
             </C.Detail>

@@ -11,33 +11,45 @@ export const Container = styled.div`
 export const Detail = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 85vh;
+    background-image: linear-gradient(90deg, rgba(69,65,65,1) 0%, rgba(69,65,65,1) 35%, rgba(69,65,65,0.7) 100%), ${props => `url(${props.background})`};
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: contain;
 `;
 
 export const MoviePosterArea = styled.div`
-    width: 630px;
-    height: 350px;
-    margin: 70px;    
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 50px;
     border-radius: 10px;
-    box-shadow: -10px 12px 30px -3px rgba(0,0,0,0.5);
+    box-shadow: 0px 2px 10px 3px rgba(220,220,220,0.1);
     overflow: hidden;
+    height: fit-content;
+
+    & button {
+        width: 100%;
+    }
 `;
 
 export const MoviePoster = styled.img`
-    width: 100%;
-    height: 100%;
+    width: 22vw;
+    height: 60vh;
 `;
 
-export const InfoArea = styled.div`
-    width: 30vw;  
-    padding: 20px 50px;
+export const InfoArea = styled.div`  
     display: flex;
+    flex: 1;
+    padding: 20px 50px;
     flex-direction: column;
     justify-content: center;
-    color: #4B5C6B;
+    align-items: flex-start;
+    color: #FFF;
 `;
 
-export const MovieTitle = styled.h2`
-    max-width: 300px;
+export const MovieTitle = styled.h1`
     margin-top: 0px;
 `;
 
@@ -82,10 +94,9 @@ export const Button = styled.button`
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
-    margin-bottom: 10px;
 
     &:hover {
-        opacity: 0.8;
+        opacity: 0.85;
     }
 `;
 
