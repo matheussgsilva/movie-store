@@ -13,10 +13,11 @@ export const Detail = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 85vh;
-    background-image: linear-gradient(90deg, rgba(69,65,65,1) 0%, rgba(69,65,65,1) 35%, rgba(69,65,65,0.7) 100%), ${props => `url(${props.background})`};
+    background-image: linear-gradient(90deg, rgba(69,65,65,1) 0%, rgba(69,65,65,1) 35%, rgba(69,65,65,0.75) 100%), ${props => `url(${props.background})`};
     background-repeat: no-repeat;
     background-position: top right;
     background-size: contain;
+    position: relative;
 `;
 
 export const MoviePosterArea = styled.div`
@@ -42,7 +43,7 @@ export const MoviePoster = styled.img`
 export const InfoArea = styled.div`  
     display: flex;
     flex: 1;
-    padding: 20px 50px;
+    padding: 25px 15px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -50,13 +51,14 @@ export const InfoArea = styled.div`
 `;
 
 export const MovieTitle = styled.h1`
-    margin-top: 0px;
+    margin: 0px;
 `;
 
 export const MovieInfo = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    justify-content: flex-start;
+    margin-top: -10px;
 `;
 
 export const MovieInfoText = styled.p`
@@ -65,6 +67,21 @@ export const MovieInfoText = styled.p`
 
 export const MovieInfoIcon = styled.i`
     margin-right: 10px;
+`;
+
+export const DotIcon = styled.i`
+    font-size: 1.5rem;
+    margin-bottom: -5px;
+`;
+
+export const FavoriteIconArea = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #8DD7CF;
 `;
 
 export const MovieLink = styled.a`
@@ -78,7 +95,7 @@ export const MovieLink = styled.a`
 
 export const MovieOverview = styled.p`
     display: block;
-    width: 30vw;
+    width: 50vw;
 `;
 
 export const Button = styled.button`
@@ -101,11 +118,24 @@ export const Button = styled.button`
 `;
 
 export const FavoriteIcon = styled.i`
+    font-size: 1.2rem;
     color: ${props => props.isFavorite ? '#FA4C37' : '#FFF'};
+    margin-bottom: -5px;
 `;
 
 export const CartIcon = styled.i`
     color: ${props => props.isAddCart ? '#F5DC00' : '#FFF'};
+`;
+
+export const MovieTrailerArea = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(50, 50, 50, 0.85);
+    position: fixed;
+    z-index: 2;
 `;
 
 export const SimilarMovies = styled.div`

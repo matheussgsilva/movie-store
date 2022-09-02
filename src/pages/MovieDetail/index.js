@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as C from './styles'
 import { FaHeart, FaStar, FaShoppingCart } from 'react-icons/fa'
+import { BsDot } from 'react-icons/bs'
 import ReactPlayer from 'react-player/lazy'
 import {tmdb} from '../../lib/tmdb'
 import { useApp } from '../../provider/AppProvider'
@@ -89,6 +90,17 @@ const MovieDetail = () => {
         }
     }
 
+    const convertMovieTime = (time) => {
+        const hour = Math.floor(time/ 60);          
+        const min = time % 60;
+        const convertedHour = (`00${hour}`).slice(-2);
+        const convertedMin = (`00${min}`).slice(-2);
+        
+        return `${convertedHour}h ${convertedMin}m`;
+      }
+
+    console.log(movieDetail)
+
     return (
         <C.Container>
             <C.Detail background={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`}>
@@ -111,26 +123,33 @@ const MovieDetail = () => {
                         <C.MovieInfoIcon>
                             <FaStar />
                         </C.MovieInfoIcon>
-                        <C.MovieInfoText>{release.slice(0,4)}</C.MovieInfoText>
+                        <C.DotIcon>
+                            <BsDot />
+                        </C.DotIcon>
+                        <C.MovieInfoText>
+                            {release.slice(0,4)}
+                        </C.MovieInfoText>
+                        <C.DotIcon>
+                            <BsDot />
+                        </C.DotIcon>
+                        <C.MovieInfoText>
+                            {convertMovieTime(movieDetail.runtime)}
+                        </C.MovieInfoText>
                     </C.MovieInfo>
+                    <C.FavoriteIconArea onClick={handleFavorite}>
+                        <C.FavoriteIcon isFavorite={isFavorite}><FaHeart /></C.FavoriteIcon>
+                    </C.FavoriteIconArea>
                     {movieDetail.homepage &&
                         <C.MovieLink href={`${movieDetail.homepage}`} target="_blank" rel='noreferrer'>
                             Acessar site oficial
                         </C.MovieLink>                    
                     }
-                    <C.MovieOverview>{movieDetail.overview}</C.MovieOverview>
-                    <C.Button onClick={handleFavorite}>
-                            {isFavorite ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'} 
-                            <C.FavoriteIcon isFavorite={isFavorite}><FaHeart /></C.FavoriteIcon>
-                    </C.Button>
-                    
-                </C.InfoArea>
-                {showMovietrailer &&
-                    <C.MoviePosterArea>
-                        <ReactPlayer playing={false} url={videoURL} />
-                    </C.MoviePosterArea>
-                }
+                    <C.MovieOverview>{movieDetail.overview}</C.MovieOverview>                    
+                </C.InfoArea>              
             </C.Detail>
+            <C.MovieTrailerArea>
+                <ReactPlayer playing={true} url={videoURL} height='80vh'/>
+            </C.MovieTrailerArea>
             <C.SimilarMovies>
                 <C.Title>Filmes similares</C.Title>
                 <C.List>
