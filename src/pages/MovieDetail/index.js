@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as C from './styles'
-import { FaHeart, FaStar, FaShoppingCart } from 'react-icons/fa'
+import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import { BsDot } from 'react-icons/bs'
+import { BiMoviePlay } from 'react-icons/bi'
 import ReactPlayer from 'react-player/lazy'
+import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import {tmdb} from '../../lib/tmdb'
 import { useApp } from '../../provider/AppProvider'
 import { useCart } from '../../provider/CartProvider'
@@ -21,6 +24,7 @@ const MovieDetail = () => {
     const { cart, setCart } = useCart([])
     const { id } = useParams()
     const release = String(movieDetail.release_date)
+    const percentage = (Number(movieDetail.vote_average)*10).toFixed(0)
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb}&language=pt-BR`)
@@ -118,15 +122,6 @@ const MovieDetail = () => {
                     <C.MovieTitle>{movieDetail.title}</C.MovieTitle>                   
                     <C.MovieInfo>
                         <C.MovieInfoText>
-                            {Number(movieDetail.vote_average).toFixed(1)}
-                        </C.MovieInfoText>
-                        <C.MovieInfoIcon>
-                            <FaStar />
-                        </C.MovieInfoIcon>
-                        <C.DotIcon>
-                            <BsDot />
-                        </C.DotIcon>
-                        <C.MovieInfoText>
                             {release.slice(0,4)}
                         </C.MovieInfoText>
                         <C.DotIcon>
@@ -136,20 +131,46 @@ const MovieDetail = () => {
                             {convertMovieTime(movieDetail.runtime)}
                         </C.MovieInfoText>
                     </C.MovieInfo>
-                    <C.FavoriteIconArea onClick={handleFavorite}>
-                        <C.FavoriteIcon isFavorite={isFavorite}><FaHeart /></C.FavoriteIcon>
-                    </C.FavoriteIconArea>
-                    {movieDetail.homepage &&
-                        <C.MovieLink href={`${movieDetail.homepage}`} target="_blank" rel='noreferrer'>
-                            Acessar site oficial
-                        </C.MovieLink>                    
-                    }
+                    <C.IconsArea>
+                        <C.MovieInfoText>
+                            Avaliação: 
+                        </C.MovieInfoText>
+                        <C.ProgressbarArea>
+                                <CircularProgressbar 
+                                    value={percentage} 
+                                    text={`${percentage}%`}
+                                    background={true}
+                                    backgroundPadding={6}
+                                    styles={buildStyles({
+                                        strokeLinecap: 'butt',
+                                        textSize: '1.8rem',
+                                        pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
+                                        textColor: '#FFF',
+                                        trailColor: 'transparent',
+                                        pathColor: "#FFF",
+                                        backgroundColor: '#8DD7CF',
+                                        width: 40,
+                                    })}
+                                />
+                            </C.ProgressbarArea>
+                        <C.MovieDetailIcon onClick={handleFavorite}>
+                            <C.FavoriteIcon isFavorite={isFavorite}><FaHeart /></C.FavoriteIcon>
+                        </C.MovieDetailIcon>
+                        <C.MovieDetailIcon onClick={() => setShowMovieTrailer(true)}>
+                            <C.MovieTrailerIcon><BiMoviePlay /></C.MovieTrailerIcon>
+                        </C.MovieDetailIcon>
+                        {movieDetail.homepage &&
+                            <C.MovieLink href={`${movieDetail.homepage}`} target="_blank" rel='noreferrer'>
+                                Acessar site oficial
+                            </C.MovieLink>                    
+                        }
+                    </C.IconsArea>
                     <C.MovieOverview>{movieDetail.overview}</C.MovieOverview>                    
                 </C.InfoArea>              
             </C.Detail>
-            <C.MovieTrailerArea>
+            {/*<C.MovieTrailerArea>
                 <ReactPlayer playing={true} url={videoURL} height='80vh'/>
-            </C.MovieTrailerArea>
+                </C.MovieTrailerArea>*/}
             <C.SimilarMovies>
                 <C.Title>Filmes similares</C.Title>
                 <C.List>

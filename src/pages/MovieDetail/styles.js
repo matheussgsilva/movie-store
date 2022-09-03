@@ -61,12 +61,27 @@ export const MovieInfo = styled.div`
     margin-top: -10px;
 `;
 
+export const IconsArea = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    width: 400px;
+    column-gap: 20px;
+    margin: 20px 0px;
+`;
+
+export const ProgressbarArea = styled.div`
+    width: 50px;
+    height: 50px;
+    margin-left: -15px;
+`;
+
 export const MovieInfoText = styled.p`
     margin-right: 5px;
 `;
 
-export const MovieInfoIcon = styled.i`
-    margin-right: 10px;
+export const MovieTrailerIcon = styled.i`
+    font-size: 1.6rem;
+    margin-bottom: -5px;
 `;
 
 export const DotIcon = styled.i`
@@ -74,7 +89,7 @@ export const DotIcon = styled.i`
     margin-bottom: -5px;
 `;
 
-export const FavoriteIconArea = styled.div`
+export const MovieDetailIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,6 +97,11 @@ export const FavoriteIconArea = styled.div`
     height: 50px;
     border-radius: 50%;
     background-color: #8DD7CF;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
 `;
 
 export const MovieLink = styled.a`
@@ -105,7 +125,7 @@ export const Button = styled.button`
     border: none;
     width: 250px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
     background-color: #8DD7CF;
     color: #fff;
     font-weight: bold;
