@@ -61,10 +61,8 @@ const MovieDetail = () => {
     }, [])
 
     useEffect(() => {
-        setShowMovieTrailer(false)
-        let URLRefresh = (movieVideo.key ? movieVideo.key : '')
-        setVideoURL(`https://www.youtube.com/watch?v=${URLRefresh}`)
-    }, [id])
+        setVideoURL(`https://www.youtube.com/watch?v=${movieVideo.key}`)
+    }, [])
 
     const handleFavorite = () => {
         if (isFavorite) {
@@ -103,8 +101,6 @@ const MovieDetail = () => {
         return `${convertedHour}h ${convertedMin}m`;
       }
 
-    console.log(movieDetail)
-
     return (
         <C.Container>
             <C.Detail background={`https://image.tmdb.org/t/p/w500/${movieDetail.backdrop_path}`}>
@@ -114,7 +110,7 @@ const MovieDetail = () => {
                         alt={movieDetail.title} 
                     />
                     <C.Button onClick={handleAddCart}>
-                            {isFavorite ? 'Remover do carrinho' : 'Adicionar ao carrinho'} 
+                            {isAddCart ? 'Remover do carrinho' : 'Adicionar ao carrinho'} 
                             <C.CartIcon isAddCart={isAddCart}><FaShoppingCart /></C.CartIcon>
                     </C.Button>
                 </C.MoviePosterArea>
@@ -126,7 +122,16 @@ const MovieDetail = () => {
                         </C.MovieInfoText>
                         <C.DotIcon>
                             <BsDot />
-                        </C.DotIcon>
+                        </C.DotIcon>                        
+                        {movieDetail.genres &&
+                        movieDetail.genres.map((genre, index) => (
+                        <C.MovieInfoText key={genre.id}>
+                            {genre.name}{index !== (movieDetail.genres.length)-1 && ','}
+                        </C.MovieInfoText>                       
+                        ))}                        
+                        <C.DotIcon>
+                            <BsDot />
+                        </C.DotIcon> 
                         <C.MovieInfoText>
                             {convertMovieTime(movieDetail.runtime)}
                         </C.MovieInfoText>
@@ -167,6 +172,11 @@ const MovieDetail = () => {
                             <C.MovieTrailerIcon><BiMoviePlay /></C.MovieTrailerIcon>
                         </C.MovieDetailIcon>}
                     </C.IconsArea>
+                    <C.MovieDetailSubTitle>Título original</C.MovieDetailSubTitle>
+                    <C.MovieInfoText>
+                        {movieDetail.original_title}
+                    </C.MovieInfoText>
+                    <C.MovieDetailSubTitle>Sinopse</C.MovieDetailSubTitle>
                     <C.MovieOverview>{movieDetail.overview}</C.MovieOverview>                    
                 </C.InfoArea>              
             </C.Detail>
@@ -175,7 +185,7 @@ const MovieDetail = () => {
                 <C.CloseMovieTrailer onClick={() => setShowMovieTrailer(false)}>
                     <FaWindowClose />
                 </C.CloseMovieTrailer>
-                <ReactPlayer playing={true} url={videoURL} height='80vh'/>
+                <ReactPlayer playing={true} url={videoURL} />
                 </C.MovieTrailerArea>}
             <C.SimilarMovies>
                 <C.Title>Filmes similares</C.Title>

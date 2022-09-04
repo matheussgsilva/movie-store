@@ -54,6 +54,11 @@ export const MovieTitle = styled.h1`
     margin: 0px;
 `;
 
+export const MovieDetailSubTitle = styled.h3`
+    margin-top: 5px;
+    margin-bottom: -5px;
+`;
+
 export const MovieInfo = styled.div`
     display: flex;
     align-items: center;
