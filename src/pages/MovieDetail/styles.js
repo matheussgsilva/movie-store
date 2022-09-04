@@ -104,15 +104,6 @@ export const MovieDetailIcon = styled.div`
     }
 `;
 
-export const MovieLink = styled.a`
-    text-decoration: none;
-    color: #4B5C6B;
-
-    &:hover {
-        text-decoration: underline;
-    }
-`;
-
 export const MovieOverview = styled.p`
     display: block;
     width: 50vw;
@@ -156,6 +147,23 @@ export const MovieTrailerArea = styled.div`
     background-color: rgba(50, 50, 50, 0.85);
     position: fixed;
     z-index: 2;
+`;
+
+export const CloseMovieTrailer = styled.i`
+    display: block;
+    font-size: 2rem;
+    color: #FFF;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: transform 200ms ease-in-out;
+
+    &:hover {
+        transform: scale(1.2)
+    }
 `;
 
 export const SimilarMovies = styled.div`

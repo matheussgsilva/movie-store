@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as C from './styles'
-import { FaHeart, FaShoppingCart } from 'react-icons/fa'
+import { FaHeart, FaShoppingCart, FaWindowClose } from 'react-icons/fa'
 import { BsDot } from 'react-icons/bs'
 import { BiMoviePlay } from 'react-icons/bi'
 import ReactPlayer from 'react-player/lazy'
@@ -153,24 +153,30 @@ const MovieDetail = () => {
                                     })}
                                 />
                             </C.ProgressbarArea>
-                        <C.MovieDetailIcon onClick={handleFavorite}>
+                        <C.MovieDetailIcon 
+                            onClick={handleFavorite} 
+                            title={!isFavorite ? 'Adicionar aos favoritos': 'Remover dos favoritos'}
+                        >
                             <C.FavoriteIcon isFavorite={isFavorite}><FaHeart /></C.FavoriteIcon>
                         </C.MovieDetailIcon>
-                        <C.MovieDetailIcon onClick={() => setShowMovieTrailer(true)}>
+                        {movieVideo &&
+                        <C.MovieDetailIcon 
+                            onClick={() => setShowMovieTrailer(true)}
+                            title='Reproduzir trailer'
+                        >
                             <C.MovieTrailerIcon><BiMoviePlay /></C.MovieTrailerIcon>
-                        </C.MovieDetailIcon>
-                        {movieDetail.homepage &&
-                            <C.MovieLink href={`${movieDetail.homepage}`} target="_blank" rel='noreferrer'>
-                                Acessar site oficial
-                            </C.MovieLink>                    
-                        }
+                        </C.MovieDetailIcon>}
                     </C.IconsArea>
                     <C.MovieOverview>{movieDetail.overview}</C.MovieOverview>                    
                 </C.InfoArea>              
             </C.Detail>
-            {/*<C.MovieTrailerArea>
+            {showMovietrailer &&
+            <C.MovieTrailerArea>
+                <C.CloseMovieTrailer onClick={() => setShowMovieTrailer(false)}>
+                    <FaWindowClose />
+                </C.CloseMovieTrailer>
                 <ReactPlayer playing={true} url={videoURL} height='80vh'/>
-                </C.MovieTrailerArea>*/}
+                </C.MovieTrailerArea>}
             <C.SimilarMovies>
                 <C.Title>Filmes similares</C.Title>
                 <C.List>
