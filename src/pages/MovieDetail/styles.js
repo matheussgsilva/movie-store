@@ -171,6 +171,11 @@ export const CloseMovieTrailer = styled.i`
     }
 `;
 
+export const PlayerArea = styled.div`
+    width: 50vw;
+    aspect-ratio: 16 / 9;
+`;
+
 export const SimilarMovies = styled.div`
     display: flex;
     flex-direction: column;

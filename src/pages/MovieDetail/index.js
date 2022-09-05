@@ -4,7 +4,8 @@ import * as C from './styles'
 import { FaHeart, FaShoppingCart, FaWindowClose } from 'react-icons/fa'
 import { BsDot } from 'react-icons/bs'
 import { BiMoviePlay } from 'react-icons/bi'
-import ReactPlayer from 'react-player/lazy'
+import { DefaultUi, Player, Youtube } from "@vime/react"
+import '@vime/core/themes/default.css'
 import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {tmdb} from '../../lib/tmdb'
@@ -185,7 +186,12 @@ const MovieDetail = () => {
                 <C.CloseMovieTrailer onClick={() => setShowMovieTrailer(false)}>
                     <FaWindowClose />
                 </C.CloseMovieTrailer>
-                <ReactPlayer playing={true} url={videoURL} />
+                <C.PlayerArea>
+                    <Player>
+                        <Youtube videoId={movieVideo.key}/>
+                        <DefaultUi />
+                    </Player>
+                </C.PlayerArea>
                 </C.MovieTrailerArea>}
             <C.SimilarMovies>
                 <C.Title>Filmes similares</C.Title>
