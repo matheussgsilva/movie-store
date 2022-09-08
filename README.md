@@ -89,7 +89,10 @@ Abaixo segue estrutura das pastas:
 - Na página Home se encontram alguns filmes dividos em categorias, cada categoria possui um carrossel onde é possível vizualizar mais títulos.
 - Os filmes são divididos em cards, cada um com informações referentes ao determinado filme e também com ícones de info e de favoritar.
 - Clicando no ícone de favoritar o filme é adicionado à uma lista que é vizualizada clicando no ícone de "coração" na navbar.
-- Ao clicar no ícone de info ou no poster o usuário 
+- Ao clicar no ícone de info ou no poster o usuário é direcionado à página de detalhes do filme e porderá ver a sinopse, adicionar ao carrinho de compras ou à lista de favoritos e quando disponível na Api, poderá ver o trailer.
+- Na navbar existe um campo de pesquisa onde é possível pesquisar filmes pelo título.
+- Clicando no ícone do carrinho de compras na navbar é exibido na tela uma sidebar com a lista dos filmes que foram previamente adicionados.
+- Navegando até a página de compra o usuário pode optar pela compra ou aluguel dos filmes individualmente, e o valor é alterado conforme a opção.
 
 ---
 
