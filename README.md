@@ -6,7 +6,7 @@
 
 <h1 align='center'><a href="http://matheussilva.dev.br/" target="_blank" rel="noopener noreferrer" title="Veja o Portfolio">Movie Store</a></h1>
 <p align="center">
-<img src="https://github.com/matheussgsilva/movie-store/assets/movie-store.gif" alt="Movie Store" width="700" height=""/>
+<img src="https://github.com/Matheussgsilva/movie-store/blob/main/src/assets/movie-store.gif" alt="Movie Store" width="700" height=""/>
 </p>
 
 <p align="center">
