@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as C from './styles'
+import { useScrollBy } from 'react-use-window-scroll'
 import { FaHeart, FaShoppingCart, FaWindowClose } from 'react-icons/fa'
 import { BsDot } from 'react-icons/bs'
 import { BiMoviePlay } from 'react-icons/bi'
@@ -20,29 +21,26 @@ const MovieDetail = () => {
     const [isFavorite, setIsFavorite] = useState(false)
     const [isAddCart, setIsAddCart] = useState(false)
     const [showMovietrailer, setShowMovieTrailer] = useState(false)
-    const [videoURL, setVideoURL] = useState('')
     const { favoriteMovies, setFavoriteMovies } = useApp()
     const { cart, setCart } = useCart([])
     const { id } = useParams()
     const release = String(movieDetail.release_date)
     const percentage = (Number(movieDetail.vote_average)*10).toFixed(0)
+    const scrollBy = useScrollBy()
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb}&language=pt-BR`)
         .then(res => res.json())
         .then(data => setMovieDetail(data))
-    }, [id])
 
-    useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${tmdb}&language=pt-BR&page=1`)
         .then(res => res.json())
         .then(data => setSimilarMovies(data.results))
-    }, [id])
+        scrollBy({ top: -2000, behavior: "smooth" })
 
-    useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${tmdb}&language=pt-BR`)
         .then(res => res.json())
-        .then(data => setMovieVideo(data.results[0]))        
+        .then(data => setMovieVideo(data.results[0]))
     }, [id])
 
     useEffect(() => {
@@ -59,10 +57,6 @@ const MovieDetail = () => {
                 setIsAddCart(true)
             }
         })
-    }, [])
-
-    useEffect(() => {
-        setVideoURL(`https://www.youtube.com/watch?v=${movieVideo.key}`)
     }, [])
 
     const handleFavorite = () => {

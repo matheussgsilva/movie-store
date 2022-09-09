@@ -18,6 +18,7 @@ export const Detail = styled.div`
     background-position: top right;
     background-size: contain;
     position: relative;
+    padding-bottom: 20px;
 `;
 
 export const MoviePosterArea = styled.div`
