@@ -62,7 +62,8 @@ const MovieCard = ({ movie }) => {
             <C.ContentArea>
                 <C.PosterArea>
                     <Link to={`/detail/${movie.id}`}>                  
-                        <C.Poster src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+                        {movie.poster_path !== '' &&
+                        <C.Poster src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />}
                     </Link>                 
                     <C.MovieRelease>{String(movie.release_date).slice(0,4)}</C.MovieRelease>
                     <C.FavoriteIcon favorite={isFavorite} onClick={handleFavoriteMovie}>
