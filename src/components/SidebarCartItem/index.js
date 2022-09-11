@@ -5,6 +5,7 @@ import { priceMovie } from '../../lib/priceMovie'
 
 const SidebarCartItem = ({ movie }) => {
     const { cart, setCart } = useCart()
+    const posterPath = movie.poster_path
 
     const handleRemoveCart = () => {
         let newCartList = [...cart]
@@ -14,7 +15,7 @@ const SidebarCartItem = ({ movie }) => {
 
     return (
         <C.Container>
-            <C.PosterArea src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+            <C.PosterArea src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt={movie.title} />
             <C.InfoArea>
                 <C.MovieTitle>
                     {movie.title}

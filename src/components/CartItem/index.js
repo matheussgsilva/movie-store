@@ -8,6 +8,7 @@ const CartItem = ({ movie }) => {
     const { cart, setCart } = useCart()
     const [moviePrice, setMoviePrice] = useState()
     const [cartType, setCartType] = useState(movie.cart)
+    const posterPath = movie.poster_path
 
     useEffect(() => {
         if(cartType === 'buy') {
@@ -48,7 +49,7 @@ const CartItem = ({ movie }) => {
 
     return (
         <C.Container>
-            <C.PosterArea src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+            <C.PosterArea src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt={movie.title} />
             <C.InfoArea>
                 <C.MovieTitle>{movie.title}</C.MovieTitle>
                 <C.OriginalMovieTitle>

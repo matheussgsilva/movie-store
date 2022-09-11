@@ -12,6 +12,7 @@ const MovieCard = ({ movie }) => {
     const [isAddCart, setIsAddCart] = useState(false)
     const { favoriteMovies, setFavoriteMovies } = useApp()
     const { cart, setCart } = useCart([])
+    const posterPath = movie.poster_path
 
     useEffect(() => {
         favoriteMovies.map((favoriteMovie) => {
@@ -63,7 +64,7 @@ const MovieCard = ({ movie }) => {
                 <C.PosterArea>
                     <Link to={`/detail/${movie.id}`}>                  
                         {movie.poster_path !== '' &&
-                        <C.Poster src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />}
+                        <C.Poster src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt={movie.title} />}
                     </Link>                 
                     <C.MovieRelease>{String(movie.release_date).slice(0,4)}</C.MovieRelease>
                     <C.FavoriteIcon favorite={isFavorite} onClick={handleFavoriteMovie}>

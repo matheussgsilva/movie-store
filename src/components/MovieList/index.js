@@ -11,7 +11,8 @@ const MovieList = ({ moviesId, sessionTitle }) => {
     const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${tmdb}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_genres=${moviesId}&with_watch_monetization_types=flatrate`)
+        const URL = `https://api.themoviedb.org/3/discover/movie?api_key=${tmdb}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_genres=${moviesId}&with_watch_monetization_types=flatrate`
+        fetch(URL)
         .then(res => res.json())
         .then(data => setMovies((prevMovieList) => [...prevMovieList, ...data.results]))
       }, [currentPage])

@@ -29,16 +29,19 @@ const MovieDetail = () => {
     const scrollBy = useScrollBy()
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb}&language=pt-BR`)
+        const movieDetailURL = `https://api.themoviedb.org/3/movie/${id}?api_key=${tmdb}&language=pt-BR`
+        fetch(movieDetailURL)
         .then(res => res.json())
         .then(data => setMovieDetail(data))
 
-        fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${tmdb}&language=pt-BR&page=1`)
+        const similarURL = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${tmdb}&language=pt-BR&page=1`
+        fetch(similarURL)
         .then(res => res.json())
         .then(data => setSimilarMovies(data.results))
         scrollBy({ top: -2000, behavior: "smooth" })
 
-        fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${tmdb}&language=pt-BR`)
+        const movieVideoURL = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${tmdb}&language=pt-BR`
+        fetch(movieVideoURL)
         .then(res => res.json())
         .then(data => setMovieVideo(data.results[0]))
     }, [id])
