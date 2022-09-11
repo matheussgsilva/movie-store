@@ -14,7 +14,7 @@ const Navbar = ({ showCartSidebar }) => {
     const navigate = useNavigate()
 
     const handleKeyPress = (e) => {        
-        if(e.key === 'Enter') {
+        if(e.key === 'Enter' && searchField !== '') {
             navigate(`/search/${searchField}`)
         }
     }
@@ -41,8 +41,8 @@ const Navbar = ({ showCartSidebar }) => {
                     onChange={e => setSearchField(e.target.value)}
                     onKeyPress={handleKeyPress}
                 />
-                <Link to={`/search/${searchField}`}>
-                    <C.SearchIcon>
+                <Link to={`/search/${searchField}`} hidden={searchField === ''}>
+                    <C.SearchIcon disable={searchField === ''}>
                         <FaSearch />
                     </C.SearchIcon>
                 </Link>
