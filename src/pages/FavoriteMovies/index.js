@@ -7,7 +7,7 @@ const FavoriteMovies = () => {
 
     return (
         <C.Container>
-            <C.Title>Lista de Favoritos</C.Title>
+            <C.Title>{favoriteMovies.length === 0 ? 'Adicione um filme na sua lista de favoritos' : 'Lista de Favoritos'}</C.Title>
             <C.List>
                 {favoriteMovies.map(( movie ) => (
                     <MovieCard 
