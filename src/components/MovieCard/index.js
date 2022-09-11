@@ -78,7 +78,7 @@ const MovieCard = ({ movie }) => {
                 <C.InfoArea>
                     <C.MovieTitle>{movie.title.length > 30 ? `${movie.title.slice(0,30)}...` : movie.title}</C.MovieTitle>
                     <C.VoteAverageArea>
-                        <C.VoteAverageInfo>{(movie.vote_average).toFixed(2)} <FaStar /></C.VoteAverageInfo>
+                        <C.VoteAverageInfo>{(movie.vote_average).toFixed(1)} <FaStar /></C.VoteAverageInfo>
                         <C.VoteAverageInfo>
                             {movieGenre(movie.genre_ids ? movie.genre_ids[0] : movie.genres[0].id)}
                         </C.VoteAverageInfo>
