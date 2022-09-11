@@ -42,7 +42,7 @@ const Navbar = ({ showCartSidebar }) => {
                     onKeyPress={handleKeyPress}
                 />
                 <Link to={`/search/${searchField}`} hidden={searchField === ''}>
-                    <C.SearchIcon disable={searchField === ''}>
+                    <C.SearchIcon>
                         <FaSearch />
                     </C.SearchIcon>
                 </Link>
