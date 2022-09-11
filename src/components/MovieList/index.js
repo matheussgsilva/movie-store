@@ -60,7 +60,7 @@ const MovieList = ({ moviesId, sessionTitle }) => {
                     }
                     {movies.map(( movie ) => (
                         <MovieCard 
-                            key={movie.id} 
+                            key={Number(movie.id)+Number(moviesId)} 
                             movie={movie}
                         />
                     ))}
