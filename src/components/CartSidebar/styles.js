@@ -11,6 +11,12 @@ export const Container = styled.div`
     box-shadow: -5px 1px 6px -1px rgba(0,0,0,0.55);
     position: relative;
     overflow-y: scroll;
+
+    @media (max-width: 500px) {
+        width: 100vw;
+        height: 90vh;
+        padding-bottom: 50px;
+    }
 `;
 
 export const Title = styled.h3`

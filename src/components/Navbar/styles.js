@@ -9,11 +9,19 @@ export const Container = styled.div`
     padding: 18px 40px;
     position: fixed;
     z-index: 2;
+
+    @media (max-width: 500px) {
+        padding: 10px 20px;
+    }
 `;
 
 export const HomeIcon = styled.i`
     font-size: 2rem;
     color: #fff;
+
+    @media (max-width: 500px) {
+        font-size: 1.5rem;
+    }
 `;
 
 export const InputArea = styled.div`
@@ -23,6 +31,11 @@ export const InputArea = styled.div`
     height: 40px;
     box-sizing: border-box;
     margin-left: -30px;
+
+    @media (max-width: 500px) {
+        width: 50%;
+        margin-left: 0px;
+    }
 `;
 
 export const SearchInput = styled.input`
@@ -59,13 +72,22 @@ export const IconArea = styled.div`
     width: 6%;
     color: #fff;
     font-size: 1.8rem;
-    margin-right: 80px;    
+    margin-right: 80px;
+
+    @media (max-width: 500px) {
+        font-size: 1.5rem;
+        width: 4%;
+    }
 `;
 
 export const HeartIcon = styled.i`
     color: ${props => props.movies ? '#FA4C37' : '#FFF'}; 
     margin-right: 5px;
     cursor: pointer;
+
+    @media (max-width: 500px) {
+        margin-right: 10px;
+    }
 `;
 
 export const CartIconArea = styled.div`
@@ -76,8 +98,8 @@ export const CartIcon = styled.i`
     color: #fff;
 
     &::after {
-        content: '';
-        color: #000;
+        content: '${props => props.cart.length === 0 ? `` : props.cart.length}';
+        color: #333;
         position: absolute;
         font-size: 0.8rem;
         background-color: #FBE192;
@@ -86,19 +108,9 @@ export const CartIcon = styled.i`
         border-radius: 50%;
         margin-top: -5px;
         margin-left: -10px;
+        padding-top: 2px;
         text-align: center;
         transform: ${props => props.cart.length === 0 ? 'scale(0)' : 'scale(1)'};
         transition: transform 300ms ease-in;
     }
-`;
-
-export const CartNumber = styled.span`
-    color: #333333;
-    text-decoration: none;
-    position: fixed;
-    font-size: 14px;
-    top: 17px;
-    right: 37px;
-    transform: ${props => props.cart.length === 0 ? 'scale(0)' : 'scale(1)'};
-    transition: transform 300ms ease-in;
 `;

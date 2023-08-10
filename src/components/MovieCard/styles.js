@@ -7,6 +7,11 @@ export const Container = styled.div`
     width: 200px;
     height: 350px;
     box-sizing: border-box;
+
+    @media (max-width: 500px) {
+        width: 150px;
+        height: 250px;
+    }
 `;
 
 export const ContentArea = styled.div`
@@ -32,6 +37,11 @@ export const PosterArea = styled.div`
     border-bottom: 2px solid #C7D2DB;
     position: relative;
     overflow: hidden;
+
+    @media (max-width: 500px) {
+        width: 150px;
+        height: 150px;
+    }
 `;
 
 export const Poster = styled.img`
@@ -41,6 +51,11 @@ export const Poster = styled.img`
 
     &:hover {
         transform: scale(1.1);
+    }
+
+    @media (max-width: 500px) {
+        width: 150px;
+        height: 150px;
     }
 `;
 
@@ -89,32 +104,57 @@ export const InfoArea = styled.div`
     justify-content: space-between;
     text-align: center;
     height: 110px;
+
+    @media (max-width: 500px) {
+        justify-content: start;
+    }
 `;
 
 export const MovieTitle = styled.h3`
     font-size: 1rem;
     margin: 5px;
+
+    @media (max-width: 500px) {
+        font-size: 0.9rem;
+        margin: 2px;
+    }
 `;
 
 export const VoteAverageArea = styled.div`
     display: flex;
     justify-content: space-around;
+
+    @media (max-width: 500px) {
+        margin-top: 3px;
+    }
 `;
 
 export const VoteAverageInfo = styled.span`
     font-size: 0.9rem;
     margin-right: 5px;
+
+    @media (max-width: 500px) {
+        font-size: 0.8rem;
+    }
 `;
 
 export const VoteAverageIcon = styled.i`
     font-size: 0.9rem;
     margin-right: 5px;
+
+    @media (max-width: 500px) {
+        font-size: 0.7rem;
+    }
 `;
 
 export const MoviePrice = styled.p`
     font-size: 1rem;
     font-weight: bold;
     margin-top: 3px;
+
+    @media (max-width: 500px) {
+        display: none;
+    }
 `;
 
 export const Button = styled.button`

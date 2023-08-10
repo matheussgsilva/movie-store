@@ -10,6 +10,10 @@ export const Container = styled.div`
 export const Title = styled.h2`
     color: #4B5C6B;
     margin-left: 10px;
+
+    @media (max-width: 500px) {
+        font-size: 1.2rem;
+    }
 `;
 
 export const List = styled.div`
@@ -47,6 +51,11 @@ export const MoveArrowLeft = styled.div`
     &:hover {
         transform: scale(1.02);
         opacity: 1;
+    }
+
+    @media (max-width: 500px) {
+        height: 250px;
+        font-size: 1.2rem;
     }
 `;
 

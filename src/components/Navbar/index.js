@@ -55,12 +55,9 @@ const Navbar = ({ showCartSidebar }) => {
                     </C.HeartIcon>
                 </Link>
                 <C.CartIconArea onClick={showCartSidebar} >
-                    <C.CartIcon  cart={cart}>
+                    <C.CartIcon  cart={cart} cartNumber={cart.length}>
                         <FaShoppingCart />
                     </C.CartIcon>
-                    <C.CartNumber cart={cart}>
-                        {cart.length}
-                    </C.CartNumber>
                 </C.CartIconArea>
             </C.IconArea>
         </C.Container>
