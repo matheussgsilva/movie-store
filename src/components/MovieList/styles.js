@@ -28,6 +28,10 @@ export const MovieList = styled.div`
     position: relative;
     transform: ${props => props.position ? `translateX(${props.position}px)` : `translateX(0)`};
     transition: transform 300ms ease-in-out;
+
+    @media (max-width: 500px) {
+        padding-left: 50px;
+    }
 `;
 
 export const MoveArrowLeft = styled.div`
