@@ -8,6 +8,10 @@ export const Container = styled.div`
     margin-top: 15px;
     padding-bottom: 15px;
     border-bottom: 0.5px solid #DDDDDD;
+
+    @media (max-width: 500px) {
+        flex-wrap: wrap;
+    }
 `;
 
 export const PosterArea = styled.img`
@@ -70,6 +74,11 @@ export const SelectArea = styled.div`
     flex-direction: column;
     margin-left: 25px;
     margin-right: 0;
+
+    @media (max-width: 500px){
+        margin: 0;
+        margin-top: 20px;
+    }
 `;
 
 export const Label = styled.label`

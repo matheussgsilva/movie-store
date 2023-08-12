@@ -9,11 +9,20 @@ export const Container = styled.div`
     a {
         text-decoration: none;
     }
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+        padding: 50px 10px;
+    }
 `;
 
 export const CartList = styled.div`
     padding-top: 20px;
     width: 40%;
+
+    @media (max-width: 500px) {
+        width: 100%;
+    }
 `;
 
 export const CartListHeader = styled.div`
@@ -26,7 +35,7 @@ export const CartListHeader = styled.div`
 `;
 
 export const CartListHeaderInfoArea = styled.div`
-
+    
 `;
 
 export const CartListHeaderInfo = styled.p`
@@ -35,6 +44,10 @@ export const CartListHeaderInfo = styled.p`
     color: #333333;
     margin: 0;
     text-transform: uppercase;
+
+    @media (max-width: 500px) {
+        margin-bottom: 5px;
+    }
 `;
 
 export const CartListSecurity = styled.div`
@@ -63,6 +76,10 @@ export const Resume = styled.div`
     padding-top: 20px;
     margin-left: 10px;
     width:20%;
+
+    @media (max-width: 500px) {
+        width: 95%;
+    }
 `;
 
 export const ResumeHeader = styled.div`

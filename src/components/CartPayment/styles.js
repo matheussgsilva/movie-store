@@ -17,6 +17,10 @@ export const Header = styled.div`
     padding: 10px;
     box-sizing: border-box;
     margin-bottom: 10px;
+
+    @media (max-width: 500px) {
+        width: 90%;
+    }
 `;
 
 export const Title = styled.h3`
@@ -34,6 +38,14 @@ export const PaymentArea = styled.div`
     padding: 10px;
     margin-left: 20%;
     width: 60%;
+
+    @media (max-width: 500px) {
+        width: 90%;
+        margin-left: 0%;
+        align-self: center;
+        justify-content: center;
+        padding: 0 20px;
+    }
 `;
 
 export const Label = styled.label`
@@ -87,6 +99,10 @@ export const CardArea = styled.div`
 export const Card = styled.div`
     display: flex;
     justify-content: flex-start;
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
 `;
 
 export const CardInfo = styled.div`
@@ -95,6 +111,11 @@ export const CardInfo = styled.div`
     align-content: flex-start;
     margin-right: 20px;
     width: 56%;
+
+    @media (max-width: 500px) {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 `;
 
 export const CardImage = styled.div`
@@ -104,6 +125,11 @@ export const CardImage = styled.div`
     transform-style: preserve-3d;
     transform: ${props => props.isRotate ? 'rotateY(180deg)' : 'rotateY(0deg)'};
     transition: transform 600ms cubic-bezier(0.175, 0.885, 0.82, 1.375);
+
+    @media (max-width: 500px) {
+        margin: auto;
+        margin-bottom: 20px;
+    }
     
 `;
 
@@ -151,6 +177,10 @@ export const CardImageLogo = styled.div`
 
 export const CardValidationInfo = styled.div`
     display: flex;
+
+    @media (max-width: 500px) {
+        flex-wrap: wrap;
+    }
 `;
 
 export const CardExpires = styled.div`
@@ -158,6 +188,11 @@ export const CardExpires = styled.div`
     flex-direction: column;
     width: 60%;
     margin-right: 20px;
+
+    @media (max-width: 500px) {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 `;
 
 export const CardExpiresSelect = styled.div`
@@ -167,6 +202,10 @@ export const CardExpiresSelect = styled.div`
 export const CardCVV = styled.div`
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 500px) {
+        margin-bottom: 20px;
+    }
 `;
 
 export const FinishButton = styled.button`
