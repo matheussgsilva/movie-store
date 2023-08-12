@@ -9,6 +9,7 @@ export const Container = styled.div`
     min-height: 100px;
     background-color: #FFF;
     opacity: ${props => props.showPopUp ? '1' : '0'};
+    z-index: ${props => props.showPopUp ? '10' : '-10'};
     transition: 250ms ease-in;
     padding: 10px 15px;
     box-sizing: border-box;

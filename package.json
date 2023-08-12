@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@vime/core": "^5.3.1",
-    "@vime/react": "^5.3.1",
-    "dotenv": "^16.0.1",
+    "@vime/core": "^5.4.1",
+    "@vime/react": "^5.4.1",
+    "dotenv": "^16.3.1",
+    "node-cache": "^5.1.2",
     "react": "^18.1.0",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.1.0",

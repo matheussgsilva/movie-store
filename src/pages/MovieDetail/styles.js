@@ -6,6 +6,10 @@ export const Container = styled.div`
     overflow-y: hidden;
     padding-top: 70px;
     padding-bottom: 25px;
+
+    @media (max-width: 500px) {
+        padding-top: 60px;
+    }
 `;
 
 export const Detail = styled.div`
@@ -19,6 +23,12 @@ export const Detail = styled.div`
     background-size: contain;
     position: relative;
     padding-bottom: 20px;
+
+    @media (max-width: 500px) {
+        padding: 0 15px;
+        flex-direction: column-reverse;
+        background-size: auto 100%;
+    }
 `;
 
 export const MoviePosterArea = styled.div`
@@ -34,11 +44,19 @@ export const MoviePosterArea = styled.div`
     & button {
         width: 100%;
     }
+
+    @media (max-width: 500px) {
+        margin-top: -10px;
+    }
 `;
 
 export const MoviePoster = styled.img`
     width: 22vw;
     height: 60vh;
+
+    @media (max-width: 500px) {
+        display: none;
+    }
 `;
 
 export const InfoArea = styled.div`  
@@ -49,15 +67,28 @@ export const InfoArea = styled.div`
     justify-content: center;
     align-items: flex-start;
     color: #FFF;
+
+    @media (max-width: 500px) {
+        width: 90vw;
+        padding-top: 0px;
+    }
 `;
 
 export const MovieTitle = styled.h1`
     margin: 0px;
+
+    @media (max-width: 500px) {
+        font-size: 1.8rem;
+    }
 `;
 
 export const MovieDetailSubTitle = styled.h3`
     margin-top: 5px;
     margin-bottom: -5px;
+
+    @media (max-width: 500px) {
+        font-size: 1.2rem;
+    }
 `;
 
 export const MovieInfo = styled.div`
@@ -65,6 +96,11 @@ export const MovieInfo = styled.div`
     align-items: center;
     justify-content: flex-start;
     margin-top: -10px;
+
+    @media (max-width: 500px) {
+        width: 90vw;
+        margin-top: 0;
+    }
 `;
 
 export const IconsArea = styled.div`
@@ -83,6 +119,10 @@ export const ProgressbarArea = styled.div`
 
 export const MovieInfoText = styled.p`
     margin-right: 5px;
+
+    @media (max-width: 500px) {
+        font-size: 0.8rem;
+    }
 `;
 
 export const MovieTrailerIcon = styled.i`
@@ -113,6 +153,10 @@ export const MovieDetailIcon = styled.div`
 export const MovieOverview = styled.p`
     display: block;
     width: 50vw;
+
+    @media (max-width: 500px) {
+        width: 90vw;
+    }
 `;
 
 export const Button = styled.button`
@@ -175,6 +219,10 @@ export const CloseMovieTrailer = styled.i`
 export const PlayerArea = styled.div`
     width: 50vw;
     aspect-ratio: 16 / 9;
+
+    @media (max-width: 500px) {
+        width: 100vw;
+    }
 `;
 
 export const SimilarMovies = styled.div`
@@ -192,5 +240,6 @@ export const List = styled.div`
     justify-content: space-evenly;
     flex-wrap: wrap;
     column-gap: 20px;
+    row-gap: 20px;
     padding: 0px 20px;
 `;
